@@ -1,0 +1,18 @@
+export const metadata = {
+  name: "Intersection",
+  description: "Finds the common elements between two arrays.",
+  keywords: ["array"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function intersection(array1, array2) {
+  return array1.filter((item) => array2.includes(item));
+}
+```
+
+```js
+const array1 = [1, 2, 3];
+const array2 = [2, 3, 4];
+intersection(array1, array2); // [2, 3]
+```
