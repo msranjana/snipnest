@@ -28,6 +28,20 @@ export const metadata: Metadata = {
   title: "SnipNest",
   description:
     "Stuck on something? Find ready-to-use snippets that actually work. Got a cool solution? Share it and help someone out. It's like trading ideas, but for code.",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/favicon-light.png",
+        href: "/favicon-light.png",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/favicon-dark.png",
+        href: "/favicon-dark.png",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
