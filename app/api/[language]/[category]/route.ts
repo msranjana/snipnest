@@ -8,9 +8,7 @@ export async function GET(_: unknown, { params }: SnippetParams) {
 
     const groupedSnippets = await getGroupedSnippets();
 
-    const snippetsOfCategory = groupedSnippets[language][category].map(
-      ({ path, ...rest }) => rest,
-    );
+    const snippetsOfCategory = groupedSnippets[language][category];
 
     return new Response(JSON.stringify(snippetsOfCategory), {
       status: 200,

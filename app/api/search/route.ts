@@ -24,9 +24,7 @@ export async function GET(request: NextRequest) {
     const groupedSnippets = await getGroupedSnippets();
     const snippetList = getSnippetList(groupedSnippets);
 
-    const results = search(query, snippetList)
-      .map((result) => result.obj)
-      .map(({ path, ...rest }) => rest);
+    const results = search(query, snippetList).map((result) => result.obj);
 
     return new Response(JSON.stringify(results), {
       status: 200,

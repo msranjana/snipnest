@@ -12,7 +12,6 @@ export interface Snippet {
   category: string;
   name: string;
   metadata: SnippetMetadata;
-  path: string;
 }
 
 export type GroupedSnippets = Record<string, Record<string, Snippet[]>>;
@@ -51,7 +50,8 @@ export async function getSnippet(
       metadata: parseMetadata(content),
       snippet,
     };
-  } catch {
+  } catch (e) {
+    console.error(e);
     return null;
   }
 }
@@ -64,9 +64,13 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
       const snippets = files
         .filter((file) => file.endsWith(".mdx"))
         .map(async (file) => {
-          const path = resolve(basePath, file).replace(/\\/g, "/");
+          const path = resolve(basePath, file);
 
-          const parts = path.split("/");
+          const relativePath = path
+            .replace(process.cwd(), "")
+            .replace(/\\/g, "/");
+
+          const parts = relativePath.replace("/snippets/", "").split("/");
           const language = parts[0];
           const category = parts[1];
           const name = parts[2].replace(".mdx", "");
@@ -75,13 +79,13 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
 
           const metadata = parseMetadata(fileContent);
 
-          return { language, category, name, metadata, path };
+          return { language, category, name, metadata };
         });
 
       const resolvedSnippets = await Promise.all(snippets);
 
       const groupedSnippets = resolvedSnippets.reduce((acc, snippet) => {
-        const { language, category, name, metadata, path } = snippet;
+        const { language, category, name, metadata } = snippet;
 
         if (!acc[language]) {
           acc[language] = {};
@@ -96,14 +100,14 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
           category,
           name,
           metadata,
-          path,
         });
 
         return acc;
       }, {} as GroupedSnippets);
 
       return groupedSnippets;
-    } catch {
+    } catch (e) {
+      console.error(e);
       return {};
     }
   },
