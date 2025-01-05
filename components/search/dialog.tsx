@@ -21,7 +21,7 @@ function Highlighted({ children }: { children: React.ReactNode }) {
 }
 
 export function SearchDialog({ snippetList }: { snippetList: Snippet[] }) {
-  const [open, setOpen] = useSearch();
+  const [isSearchOpen, setIsSearchOpen] = useSearch();
 
   const router = useRouter();
 
@@ -31,21 +31,21 @@ export function SearchDialog({ snippetList }: { snippetList: Snippet[] }) {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setIsSearchOpen((open) => !open);
       }
     };
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, [setOpen]);
+  }, [setIsSearchOpen]);
 
   const results = search(searchQuery, snippetList);
 
   return (
     <CommandDialog
       shouldFilter={false}
-      open={open}
-      onOpenChange={setOpen}
+      open={isSearchOpen}
+      onOpenChange={setIsSearchOpen}
     >
       <CommandInput
         placeholder="Search for a snippet..."
@@ -77,7 +77,7 @@ export function SearchDialog({ snippetList }: { snippetList: Snippet[] }) {
               className="flex flex-col items-start gap-1 data-[selected='true']:bg-muted data-[selected=true]:text-foreground !px-4"
               onSelect={() => {
                 router.push(path);
-                setOpen(false);
+                setIsSearchOpen(false);
               }}
               key={path}
             >
