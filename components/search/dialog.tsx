@@ -70,7 +70,7 @@ export function SearchDialog({ snippetList }: { snippetList: Snippet[] }) {
             <Highlighted key={i}>{m}</Highlighted>
           ));
 
-          const path = `/${result.obj.path.replace(".mdx", "")}`;
+          const path = `/${result.obj.language}/${result.obj.category}/${result.obj.name}`;
 
           return (
             <CommandItem
