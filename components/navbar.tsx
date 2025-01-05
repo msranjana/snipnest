@@ -68,13 +68,13 @@ export function Navbar() {
         </Link>
         <div className="flex items-center gap-4 text-sm">
           <div className="lg:flex hidden gap-[inherit] text-sm items-center [&>a]:transition-colors">
+            <SearchInput />
             <Link
               className="text-muted-foreground hover:text-foreground"
               href="/snippets"
             >
               Snippets
             </Link>
-            <SearchInput />
             <Link
               className="fill-muted-foreground hover:fill-foreground"
               href="https://github.com/itsbrunodev/snipnest"
