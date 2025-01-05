@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import { Analytics } from "@vercel/analytics/react";
 import { Inter, Fira_Code } from "next/font/google";
 
 const sansFont = Inter({
@@ -62,7 +62,7 @@ export default async function RootLayout({
         className={cn(
           "antialiased bg-zinc-300 dark:bg-black",
           sansFont.className,
-          monoFont.variable,
+          monoFont.variable
         )}
       >
         <SearchProvider>
@@ -79,6 +79,7 @@ export default async function RootLayout({
             </div>
           </ThemeProvider>
         </SearchProvider>
+        <Analytics />
       </body>
     </html>
   );
