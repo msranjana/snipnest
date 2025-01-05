@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter, Fira_Code } from "next/font/google";
 
@@ -42,6 +42,18 @@ export const metadata: Metadata = {
       },
     ],
   },
+  openGraph: {
+    images: [
+      {
+        url: "/banner.png",
+        href: "/banner.png",
+      },
+    ],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f66b15",
 };
 
 export default async function RootLayout({
