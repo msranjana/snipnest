@@ -12,7 +12,7 @@ export async function generateMetadata({
 }: SnippetParams): Promise<Metadata> {
   const { language, category } = await params;
 
-  const title = toTitleCase(category);
+  const title = `${toTitleCase(category)} - SnipNest`;
   const description = `Snippets in the ${toTitleCase(
     category,
   )} category of ${formatLanguage(language)}.`;
