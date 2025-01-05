@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "A collection of useful snippets provided by the community.",
 };
 
+export const dynamic = "force-static";
+
 export default async function SnippetsLayout({
   children,
 }: {
