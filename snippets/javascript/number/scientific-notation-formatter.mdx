@@ -1,0 +1,16 @@
+export const metadata = {
+  name: "Scientific Notation Formatter",
+  description: "Formats a number into scientific notation.",
+  keywords: ["scientific", "notation", "format", "number"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function formatScientific(value, decimalPlaces = 2) {
+  return value.toExponential(decimalPlaces);
+}
+```
+
+```js
+formatScientific(123456); // "1.23e+5"
+```

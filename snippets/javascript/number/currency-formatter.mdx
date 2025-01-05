@@ -1,0 +1,18 @@
+export const metadata = {
+  name: "Currency Formatter",
+  description: "Formats a number as a localized currency.",
+  keywords: ["currency", "format", "number"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function formatCurrency(value, locale = "en-US", currency = "USD") {
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(
+    value
+  );
+}
+```
+
+```js
+formatCurrency(1234.56); // "$1,234.56"
+```

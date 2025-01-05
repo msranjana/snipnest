@@ -1,0 +1,22 @@
+export const metadata = {
+  name: "Ordinal Formatter",
+  description: "Adds ordinal suffixes to numbers (e.g., 1st, 2nd, 3rd).",
+  keywords: ["ordinal", "suffix", "format", "number"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function formatOrdinal(number) {
+  const suffixes = ["th", "st", "nd", "rd"];
+  const value = number % 100;
+  return (
+    number + (suffixes[(value - 20) % 10] || suffixes[value] || suffixes[0])
+  );
+}
+```
+
+```js
+formatOrdinal(1); // "1st"
+formatOrdinal(22); // "22nd"
+formatOrdinal(103); // "103rd"
+```

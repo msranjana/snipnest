@@ -1,0 +1,16 @@
+export const metadata = {
+  name: "Percentage Formatter",
+  description: "Formats a number as a percentage.",
+  keywords: ["percentage", "format", "number"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function formatPercentage(value, decimalPlaces = 2) {
+  return `${(value * 100).toFixed(decimalPlaces)}%`;
+}
+```
+
+```js
+formatPercentage(0.1234); // "12.34%"
+```

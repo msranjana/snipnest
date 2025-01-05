@@ -1,0 +1,21 @@
+export const metadata = {
+  name: "File Size Formatter",
+  description: "Converts bytes into a human-readable file size format.",
+  keywords: ["file-size", "format", "number", "bytes"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function formatFileSize(bytes, decimalPlaces = 2) {
+  if (bytes === 0) return "0 B";
+  const k = 1024;
+  const sizes = ["B", "KB", "MB", "GB", "TB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${(bytes / Math.pow(k, i)).toFixed(decimalPlaces)} ${sizes[i]}`;
+}
+```
+
+```js
+formatFileSize(1024); // "1.00 KB"
+formatFileSize(1048576); // "1.00 MB"
+```
