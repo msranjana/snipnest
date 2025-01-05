@@ -44,7 +44,7 @@ At the very top of the file, include this export with the same order of properti
 export const metadata = {
   name: "Name of the snippet", // Short and clear
   description: "What the snippet does in a sentence or two", // Describe what the snippet does, clearly and concisely
-  keywords: ["keyword1", "keyword2", "keyword3"], // Optional but helpful for search
+  keywords: ["keyword1", "keyword2", "keyword3"], // Add at least the category name in the array, please keep it short and clear and use kebab-case, within a reasonable amount
   contributors: ["your-username"], // Everyone who helped/contributed, as GitHub usernames
 };
 ```
