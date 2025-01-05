@@ -2,7 +2,7 @@ import { cache } from "react";
 
 import { readdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
 import type { SnippetMetadata } from "./types";
 import { parseMetadata } from "./utils";
@@ -39,8 +39,6 @@ export async function getSnippet(
       return null;
     }
 
-    console.log("content", content, "path", path);
-
     const snippet = content.replace(
       /export\s+const\s+metadata\s*=\s*\{[^}]*\};(\r\n){2}|```\w*\r\n/g,
       "",
@@ -53,8 +51,7 @@ export async function getSnippet(
       metadata: parseMetadata(content),
       snippet,
     };
-  } catch (e) {
-    console.error(e);
+  } catch {
     return null;
   }
 }
@@ -67,12 +64,9 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
       const snippets = files
         .filter((file) => file.endsWith(".mdx"))
         .map(async (file) => {
-          console.log("file", file);
+          const path = resolve(basePath, file).replace(/\\/g, "/");
 
-          const relativePath = file.replace(`${basePath}/`, "");
-          const path = join("./", basePath, file);
-
-          const parts = relativePath.split("\\");
+          const parts = path.split("/");
           const language = parts[0];
           const category = parts[1];
           const name = parts[2].replace(".mdx", "");
@@ -109,8 +103,7 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
       }, {} as GroupedSnippets);
 
       return groupedSnippets;
-    } catch (e) {
-      console.error(e);
+    } catch {
       return {};
     }
   },
