@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   title: "Not Found - SnipNest",
 };
 
-export default function NotFoundPage() {
+export default async function NotFoundPage() {
   return <NotFound />;
 }
