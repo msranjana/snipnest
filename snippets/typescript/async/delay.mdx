@@ -1,0 +1,20 @@
+export const metadata = {
+  name: "Delay",
+  description: "Pauses execution for a given number of milliseconds.",
+  keywords: ["promise", "delay", "timeout", "wait"],
+  contributors: ["itsbrunodev"],
+};
+
+```ts
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+```
+
+```ts
+(async () => {
+  console.log("Start"); // Start
+  await delay(1000); // Wait for 1 second
+  console.log("End"); // End
+})();
+```
