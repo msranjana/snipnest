@@ -18,6 +18,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "./ui/drawer";
+import { Logo } from "./logo";
 
 function SearchInput() {
   const [_, setIsSearchOpen] = useSearch();
@@ -59,13 +60,14 @@ export function Navbar() {
     <nav className="w-full border-b border-b-border h-12 flex items-center xl:px-0 px-4 fixed bg-background z-50">
       <div className="max-w-7xl mx-auto w-full flex justify-between">
         <Link
-          className="font-semibold text-lg"
+          className="font-semibold text-lg inline-flex gap-2 items-center hover:opacity-90 transition-opacity"
           href="/"
         >
+          <Logo />
           SnipNest
         </Link>
-        <div className="flex items-center gap-4 text-sm transition-colors">
-          <div className="lg:flex hidden gap-[inherit] text-sm items-center">
+        <div className="flex items-center gap-4 text-sm">
+          <div className="lg:flex hidden gap-[inherit] text-sm items-center [&>a]:transition-colors">
             <Link
               className="text-muted-foreground hover:text-foreground"
               href="/snippets"
@@ -86,6 +88,7 @@ export function Navbar() {
           <Drawer
             shouldScaleBackground
             setBackgroundColorOnScale={false}
+            onOpenChange={setIsDrawerOpen}
           >
             <DrawerTrigger
               className="inline-flex sm:hidden"
@@ -109,7 +112,7 @@ export function Navbar() {
                   </DrawerDescription>
                 </DrawerHeader>
                 <div className="relative flex-1 rounded-t-[inherit] bg-background p-4">
-                  <div className="flex flex-col items-end gap-4">
+                  <div className="flex flex-col items-end gap-4 [&>a]:transition-colors">
                     <Link
                       className="text-muted-foreground hover:text-foreground"
                       href="/snippets"
