@@ -1,0 +1,36 @@
+name: Validate Snippets
+
+on:
+  pull_request:
+    paths:
+      - "snippets/**"
+  push:
+    paths:
+      - "snippets/**"
+
+jobs:
+  validate-snippets:
+    runs-on: ubuntu-latest
+    name: Validate Snippets
+    strategy:
+      matrix:
+        node-version: [22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run validation script
+        run: pnpm validate-snippets

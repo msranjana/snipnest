@@ -1,0 +1,28 @@
+export const metadata = {
+  name: "Partition",
+  description: "Splits an array into two arrays based on a callback function.",
+  keywords: ["array", "partition"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function partition(arr, callback) {
+  return arr.reduce(
+    ([pass, fail], elem) => {
+      if (callback(elem)) {
+        pass.push(elem);
+      } else {
+        fail.push(elem);
+      }
+      return [pass, fail];
+    },
+    [[], []]
+  );
+}
+```
+
+```js
+const arr = [1, 2, 3, 4, 5];
+const isEven = (n) => n % 2 === 0;
+partition(arr, isEven); // [[2, 4], [1, 3, 5]]
+```

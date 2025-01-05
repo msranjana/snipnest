@@ -1,0 +1,20 @@
+export const metadata = {
+  name: "To Kebab Case",
+  description: "Converts a string to kebab casing.",
+  keywords: ["string", "casing"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function toKebabCase(str) {
+  return str
+    .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "")
+    .replace(/([a-z])([A-Z])/g, (m, a, b) => `${a}_${b.toLowerCase()}`)
+    .replace(/[^A-Za-z0-9]+|_+/g, "-")
+    .toLowerCase();
+}
+```
+
+```js
+toKebabCase("hello world"); // "hello-world"
+```

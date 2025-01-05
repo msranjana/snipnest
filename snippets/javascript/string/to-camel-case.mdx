@@ -1,0 +1,16 @@
+export const metadata = {
+  name: "To Camel Case",
+  description: "Converts a string to camel casing.",
+  keywords: ["string", "casing"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function toCamelCase(str) {
+  return str.replace(/\W+(.)/g, (match, chr) => chr.toUpperCase());
+}
+```
+
+```js
+toCamelCase("hello world"); // "helloWorld"
+```

@@ -1,0 +1,21 @@
+export const metadata = {
+  name: "To Pascal Case",
+  description: "Converts a string to pascal casing.",
+  keywords: ["string", "casing"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function toPascalCase(str) {
+  return str
+    .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "$")
+    .replace(/[^A-Za-z0-9]+/g, "$")
+    .replace(/([a-z])([A-Z])/g, (m, a, b) => `${a}$${b}`)
+    .toLowerCase()
+    .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
+}
+```
+
+```js
+toPascalCase("hello world"); // "HelloWorld"
+```
