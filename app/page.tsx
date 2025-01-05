@@ -31,7 +31,7 @@ export default async function HomePage() {
           asChild
         >
           <Link
-            href="https://github.com/itsbrunodev/snipnest"
+            href="https://github.com/itsbrunodev/snipnest/blob/main/CONTRIBUTING.md#snippet-guidelines"
             target="_blank"
           >
             Submit a Snippet
