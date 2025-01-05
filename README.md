@@ -44,7 +44,7 @@ To run this project locally, first clone the repository
 git clone https://github.com/itsbrunodev/snipnest.git
 ```
 
-Add the environment variables you can find in `.env.example` to `.env.local`. (this project uses `@vercel/kv`, but you can use any other Redis provider you prefer)
+Add the environment variables you can find in `.env.example` to `.env.local`. (this project uses `@upstash/redis`, but you can use any other Redis provider you prefer)
 
 Install the dependencies (this project uses pnpm as the package manager, but you can use any other package manager you prefer)
 
