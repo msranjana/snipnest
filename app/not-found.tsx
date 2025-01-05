@@ -38,7 +38,11 @@ export default function NotFoundPage() {
         </div>
         <div className="flex flex-col gap-2 items-center">
           <SearchSnippetButton />
-          <Button variant="link" size="sm" onClick={() => router.back()}>
+          <Button
+            variant="link"
+            size="sm"
+            onClick={() => router.back()}
+          >
             Go Back
           </Button>
         </div>
