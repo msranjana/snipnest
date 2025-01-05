@@ -8,7 +8,7 @@ export function Logo() {
       aria-label="Logo"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_325_1418)">
+      <g clipPath="url(#clip0_325_1418)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
