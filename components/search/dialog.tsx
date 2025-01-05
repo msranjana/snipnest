@@ -6,6 +6,8 @@ import { ChevronRightIcon } from "lucide-react";
 
 import type { Snippet } from "@/lib/snippets";
 import { search } from "@/lib/search";
+import { toKebabCase } from "@/lib/utils";
+
 import { useSearch } from "@/hooks/use-search";
 
 import {
@@ -52,7 +54,13 @@ export function SearchDialog({ snippetList }: { snippetList: Snippet[] }) {
         onValueChange={setSearchQuery}
       />
       <CommandList className="p-2 min-h-80">
-        {results.length === 0 && <CommandEmpty>No results found.</CommandEmpty>}
+        {results.length === 0 && (
+          <CommandEmpty>
+            {searchQuery === ""
+              ? "Start typing to show results."
+              : "No results found."}
+          </CommandEmpty>
+        )}
         {results.map((result) => {
           const name = result[0].highlight((m, i) => (
             <Highlighted key={i}>{m}</Highlighted>
@@ -70,7 +78,11 @@ export function SearchDialog({ snippetList }: { snippetList: Snippet[] }) {
             <Highlighted key={i}>{m}</Highlighted>
           ));
 
-          const path = `/${result.obj.language}/${result.obj.category}/${result.obj.name}`;
+          const path = `/snippets/${[
+            result.obj.language.toLowerCase(),
+            toKebabCase(result.obj.category),
+            toKebabCase(result.obj.name),
+          ].join("/")}`;
 
           return (
             <CommandItem
