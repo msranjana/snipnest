@@ -75,7 +75,9 @@ function validateMdxFile(filePath: string) {
   }
 
   if (!keywords) {
-    throw new Error('Metadata field "keywords" is missing or incorrect.');
+    throw new Error(
+      'Metadata field "keywords" is missing or incorrect. (add at least the category name in the array)',
+    );
   }
 
   if (!contributors) {
