@@ -39,6 +39,8 @@ export async function getSnippet(
       return null;
     }
 
+    console.log("content", content, "path", path);
+
     const snippet = content.replace(
       /export\s+const\s+metadata\s*=\s*\{[^}]*\};(\r\n){2}|```\w*\r\n/g,
       "",
@@ -65,6 +67,8 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
       const snippets = files
         .filter((file) => file.endsWith(".mdx"))
         .map(async (file) => {
+          console.log("file", file);
+
           const relativePath = file.replace(`${basePath}/`, "");
           const path = join("./", basePath, file);
 
