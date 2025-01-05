@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...snippetList.map((snippet) => {
       return {
-        url: `https://snipnest.dev/snippets/${snippet.language.toLowerCase}/${toKebabCase(snippet.category)}/${toKebabCase(snippet.name)}`,
+        url: `https://snipnest.dev/snippets/${snippet.language.toLowerCase()}/${toKebabCase(snippet.category)}/${toKebabCase(snippet.name)}`,
         lastModified: new Date(),
         changeFrequency: "always" as const,
         priority: 0.9,
