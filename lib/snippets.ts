@@ -21,7 +21,7 @@ const basePath = join(process.cwd(), "snippets");
 export async function getSnippet(
   language: string,
   category: string,
-  name: string,
+  name: string
 ): Promise<(Omit<Snippet, "path"> & { snippet: string }) | null> {
   try {
     const path = join(basePath, language, category, `${name}.mdx`);
@@ -40,7 +40,7 @@ export async function getSnippet(
 
     const snippet = content.replace(
       /export\s+const\s+metadata\s*=\s*\{[^}]*\};(\r\n){2}|```\w*\r\n/g,
-      "",
+      ""
     );
 
     return {
@@ -110,5 +110,5 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
       console.error(e);
       return {};
     }
-  },
+  }
 );

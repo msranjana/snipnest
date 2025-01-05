@@ -9,7 +9,7 @@ export interface CodeTabProps {
 
 export function Code({ children }: CodeTabProps) {
   const validTabs = Children.toArray(
-    children,
+    children
   ) as React.ReactElement<CodeTabProps>[];
 
   const [activeTab, setActiveTab] = useState(0);

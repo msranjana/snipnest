@@ -4,7 +4,7 @@ declare module "react-to-string" {
       | React.ReactElement
       | React.ReactNode
       | string
-      | Array<string | React.ReactElement>,
+      | Array<string | React.ReactElement>
   ) => string;
 
   export default reactToString;

@@ -64,7 +64,7 @@ function SelectMenu({
             <span
               className={cn(
                 "truncate",
-                !languageValue && "text-muted-foreground",
+                !languageValue && "text-muted-foreground"
               )}
             >
               {languageValue ? (
@@ -114,7 +114,7 @@ function SelectMenu({
                             "ml-auto",
                             languageValue === language.value
                               ? "opacity-100"
-                              : "opacity-0",
+                              : "opacity-0"
                           )}
                         />
                       </CommandItem>
@@ -137,7 +137,7 @@ export function GroupedSnippetsList({
   const params = useParams<Awaited<SnippetParams["params"]>>();
 
   const [currentLanguage, setCurrentLanguage] = useState<string>(
-    params.language || LANGUAGES[0].value,
+    params.language || LANGUAGES[0].value
   );
 
   useEffect(() => {
@@ -174,7 +174,7 @@ export function GroupedSnippetsList({
               <span
                 className={cn(
                   "text-sm font-normal tabular-nums",
-                  params.category !== category ? "text-muted-foreground" : "",
+                  params.category !== category ? "text-muted-foreground" : ""
                 )}
               >
                 {groupedSnippets[currentLanguage][category].length}

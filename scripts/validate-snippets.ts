@@ -18,7 +18,7 @@ function validateFolderStructure(snippetPath: string) {
 
   if (parts.length !== 3) {
     throw new Error(
-      "Invalid folder structure. The correct structure is: snippets/language/category/snippet.mdx",
+      "Invalid folder structure. The correct structure is: snippets/language/category/snippet.mdx"
     );
   }
 
@@ -26,13 +26,13 @@ function validateFolderStructure(snippetPath: string) {
 
   if (!FOLDER_NAME_REGEX.test(language)) {
     throw new Error(
-      `Invalid language folder name: ${language}. It must be in kebab-case (lowercase letters and hyphens).`,
+      `Invalid language folder name: ${language}. It must be in kebab-case (lowercase letters and hyphens).`
     );
   }
 
   if (!FOLDER_NAME_REGEX.test(category)) {
     throw new Error(
-      `Invalid category folder name: ${category}. It must be in kebab-case (lowercase letters and hyphens).`,
+      `Invalid category folder name: ${category}. It must be in kebab-case (lowercase letters and hyphens).`
     );
   }
 }
@@ -47,7 +47,7 @@ function validateFileName(filePath: string) {
 
   if (!fileName.split(".")[0].match(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)) {
     throw new Error(
-      `Invalid file name: ${fileName}. It must use kebab-case (lowercase letters and hyphens).`,
+      `Invalid file name: ${fileName}. It must use kebab-case (lowercase letters and hyphens).`
     );
   }
 }
@@ -59,7 +59,7 @@ function validateMdxFile(filePath: string) {
 
   if (!metadataMatch) {
     throw new Error(
-      "Metadata is missing or does not match the expected format.",
+      "Metadata is missing or does not match the expected format."
     );
   }
 
@@ -76,7 +76,7 @@ function validateMdxFile(filePath: string) {
 
   if (!keywords) {
     throw new Error(
-      'Metadata field "keywords" is missing or incorrect. (add at least the category name in the array)',
+      'Metadata field "keywords" is missing or incorrect. (add at least the category name in the array)'
     );
   }
 
@@ -88,7 +88,7 @@ function validateMdxFile(filePath: string) {
 
   if (codeBlocks.length < 2) {
     throw new Error(
-      "There should be at least two code blocks and each one should have a language specified.",
+      "There should be at least two code blocks and each one should have a language specified."
     );
   }
 
@@ -134,7 +134,7 @@ function displayValidationResults() {
   const duration = endTime - startTime;
 
   console.log(
-    `Checked ${validPaths.length + invalidPaths.length} snippets in ${duration.toFixed(1)}ms.`,
+    `Checked ${validPaths.length + invalidPaths.length} snippets in ${duration.toFixed(1)}ms.`
   );
 
   if (invalidPaths.length > 0) {

@@ -28,7 +28,7 @@ function SidebarMargin({
     <div
       className={cn(
         "flex flex-col gap-6 lg:ml-80 ml-0 w-full lg:pl-6 pl-0 py-6",
-        className,
+        className
       )}
     >
       {children}
@@ -50,7 +50,7 @@ export function GroupedSnippetsContent({
   const categoryLink = `/snippets/${params.language}/${params.category}`;
 
   const languageName = LANGUAGES.find(
-    (language) => language.value === params.language,
+    (language) => language.value === params.language
   )?.name!;
   const categoryName = toTitleCase(params.category || "");
 

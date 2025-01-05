@@ -19,7 +19,7 @@ export async function GET(_: unknown, { params }: SnippetParams) {
       }),
       {
         status: 404,
-      },
+      }
     );
   }
 }

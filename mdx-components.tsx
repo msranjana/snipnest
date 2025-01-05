@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents) {
   return {
     ...components,
     pre: (
-      props: JSX.IntrinsicElements["pre"] & { "data-language"?: string },
+      props: JSX.IntrinsicElements["pre"] & { "data-language"?: string }
     ) => {
       return (
         <>

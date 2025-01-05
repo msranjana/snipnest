@@ -22,7 +22,7 @@ export default async function middleware(request: NextRequest) {
         { status: 429, message: "Rate limit exceeded." },
         {
           status: 429,
-        },
+        }
       );
 }
 

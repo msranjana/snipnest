@@ -15,7 +15,7 @@ export function toTitleCase(str: string) {
     .join(" ")
     .replace(
       /\w\S*/g,
-      (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
+      (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     );
 }
 

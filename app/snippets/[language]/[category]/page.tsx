@@ -14,7 +14,7 @@ export async function generateMetadata({
 
   const title = `${toTitleCase(category)} - SnipNest`;
   const description = `Snippets in the ${toTitleCase(
-    category,
+    category
   )} category of ${formatLanguage(language)}.`;
 
   return {

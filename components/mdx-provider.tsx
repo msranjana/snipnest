@@ -7,7 +7,7 @@ import type { JSX } from "react";
 export function MdxProvider({ children }: { children: React.ReactNode }) {
   const components = useMDXComponents({
     pre: (
-      props: JSX.IntrinsicElements["pre"] & { "data-language"?: string },
+      props: JSX.IntrinsicElements["pre"] & { "data-language"?: string }
     ) => {
       return (
         <>
