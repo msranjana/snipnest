@@ -3,6 +3,8 @@ import nextMDX from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerColorHighlight } from "shiki-transformer-color-highlight";
 
+import packageJson from "./package.json" with { type: "json" };
+
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
   theme: {
@@ -26,6 +28,9 @@ const withMDX = nextMDX({
 const nextConfig = {
   pageExtensions: ["mdx", "ts", "tsx"],
   reactStrictMode: false,
+  env: {
+    VERSION: packageJson.version,
+  },
 };
 
 export default withMDX(nextConfig);
