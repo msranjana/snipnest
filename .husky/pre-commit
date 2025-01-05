@@ -1,2 +1,2 @@
-pnpm format-and-lint:fix
+pnpm format-and-lint
 pnpm validate-snippets
