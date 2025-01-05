@@ -51,7 +51,8 @@ export async function getSnippet(
       metadata: parseMetadata(content),
       snippet,
     };
-  } catch {
+  } catch (e) {
+    console.error(e);
     return null;
   }
 }
@@ -105,6 +106,7 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
 
       return groupedSnippets;
     } catch (e) {
+      console.error(e);
       return {};
     }
   },
