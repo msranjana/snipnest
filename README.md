@@ -36,6 +36,10 @@ Got something awesome to add? Check out our [Contributing Guidelines](./CONTRIBU
 - Edit existing ones
 - Create new languages or categories
 
+## Using the API
+
+You can find the API documentation [here](./API.md).
+
 ## Running Locally
 
 To run this project locally, first clone the repository
