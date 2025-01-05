@@ -1,6 +1,7 @@
 import { cache } from "react";
 
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { readdir, readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import type { SnippetMetadata } from "./types";
@@ -32,7 +33,7 @@ export async function getSnippet(
       return null;
     }
 
-    const content = readFileSync(path, "utf-8");
+    const content = await readFile(path, { encoding: "utf-8" });
 
     if (!content) {
       return null;
@@ -58,11 +59,11 @@ export async function getSnippet(
 export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
   async () => {
     try {
-      const files = readdirSync(basePath, { recursive: true }) as string[];
+      const files = (await readdir(basePath, { recursive: true })) as string[];
 
       const snippets = files
         .filter((file) => file.endsWith(".mdx"))
-        .map((file) => {
+        .map(async (file) => {
           const relativePath = file.replace(`${basePath}/`, "");
           const path = join("./", basePath, file);
 
@@ -71,12 +72,16 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
           const category = parts[1];
           const name = parts[2].replace(".mdx", "");
 
-          const metadata = parseMetadata(readFileSync(path, "utf-8"));
+          const fileContent = await readFile(path, { encoding: "utf-8" });
+
+          const metadata = parseMetadata(fileContent);
 
           return { language, category, name, metadata, path };
         });
 
-      const groupedSnippets = snippets.reduce((acc, snippet) => {
+      const resolvedSnippets = await Promise.all(snippets);
+
+      const groupedSnippets = resolvedSnippets.reduce((acc, snippet) => {
         const { language, category, name, metadata, path } = snippet;
 
         if (!acc[language]) {
