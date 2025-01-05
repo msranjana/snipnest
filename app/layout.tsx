@@ -55,11 +55,12 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      className="min-h-screen overflow-y-scroll scroll-smooth"
       suppressHydrationWarning
     >
       <body
         className={cn(
-          "antialiased overflow-y-scroll bg-zinc-300 dark:bg-black",
+          "antialiased bg-zinc-300 dark:bg-black",
           sansFont.className,
           monoFont.variable,
         )}
