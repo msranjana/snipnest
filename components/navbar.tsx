@@ -20,7 +20,13 @@ import {
 } from "./ui/drawer";
 import { Logo } from "./logo";
 
-function SearchInput() {
+function SearchInput({
+  isDrawerOpen,
+  setIsDrawerOpen,
+}: {
+  isDrawerOpen: boolean;
+  setIsDrawerOpen: (isOpen: boolean) => void;
+}) {
   const [_, setIsSearchOpen] = useSearch();
 
   const isMac =
@@ -31,7 +37,10 @@ function SearchInput() {
   return (
     <button
       className="text-muted-foreground hover:text-foreground inline-flex justify-between items-center bg-card py-1 rounded-md border border-border lg:w-48 w-full"
-      onClick={() => setIsSearchOpen(true)}
+      onClick={() => {
+        if (isDrawerOpen) setIsDrawerOpen(false);
+        setIsSearchOpen(true);
+      }}
       type="button"
     >
       <span className="gap-2 inline-flex items-center ml-2">
@@ -68,7 +77,10 @@ export function Navbar() {
         </Link>
         <div className="flex items-center gap-4 text-sm">
           <div className="lg:flex hidden gap-[inherit] text-sm items-center [&>a]:transition-colors">
-            <SearchInput />
+            <SearchInput
+              isDrawerOpen={isDrawerOpen}
+              setIsDrawerOpen={setIsDrawerOpen}
+            />
             <Link
               className="text-muted-foreground hover:text-foreground"
               href="/snippets"
@@ -88,10 +100,11 @@ export function Navbar() {
           <Drawer
             shouldScaleBackground
             setBackgroundColorOnScale={false}
+            open={isDrawerOpen}
             onOpenChange={setIsDrawerOpen}
           >
             <DrawerTrigger
-              className="inline-flex sm:hidden"
+              className="inline-flex lg:hidden"
               asChild
             >
               <button
@@ -126,7 +139,10 @@ export function Navbar() {
                     >
                       GitHub
                     </Link>
-                    <SearchInput />
+                    <SearchInput
+                      isDrawerOpen={isDrawerOpen}
+                      setIsDrawerOpen={setIsDrawerOpen}
+                    />
                   </div>
                 </div>
               </DrawerContent>
