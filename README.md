@@ -24,8 +24,8 @@ Visit the [SnipNest website](https://snipnest.dev) to explore categorized snippe
 
 Each snippet includes:
 
-- The code itself.
-- An example to show how it works.
+- The code itself
+- An example to show how it works
 
 ### Contributing
 
@@ -42,13 +42,23 @@ You can find the API documentation [here](./API.md).
 
 ## Running Locally
 
+### Prerequisites
+
 To run this project locally, first clone the repository
 
 ```
 git clone https://github.com/itsbrunodev/snipnest.git
 ```
 
-Add the environment variables you can find in `.env.example` to `.env.local`. (this project uses `@upstash/redis`, but you can use any other Redis provider you prefer)
+### About environment variables
+
+The only thing that requires environment variables is rate limiting.
+
+_Rate limiting is disabled when running on localhost and when development mode is active._
+
+When you're running in production mode and using a public IP, the rate limiting is enabled. This requires you to add the environment variables you can find in `.env.example` to `.env.local`. (this project uses Upstash Redis, you can [read more here](https://upstash.com/docs/redis/overall/getstarted) on how to get the necessary credentials)
+
+### Running
 
 Install the dependencies (this project uses pnpm as the package manager, but you can use any other package manager you prefer)
 
