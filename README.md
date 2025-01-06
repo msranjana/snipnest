@@ -6,15 +6,15 @@ Stuck on something? Find ready-to-use snippets that actually work. Got a cool so
 
 ## What is SnipNest?
 
-SnipNest is a community-driven hub for code snippets. Whether you’re looking for a quick fix, a clever way to optimize your code, or just some inspiration, you’ll find it here.
+SnipNest is a community-driven hub for code snippets. Whether you're looking for a quick fix, a clever way to optimize your code, or just some inspiration, you'll find it here.
 
-And if you’ve got a snippet that’s worth sharing, we’d love to see it! Contribute your solutions and help grow the collection.
+And if you've got a snippet that's worth sharing, we'd love to see it! Contribute your solutions and help grow the collection.
 
 ## Why SnipNest?
 
 - **Save Time**: No more hunting through forums or guessing what works. These snippets are tested and ready to go.
 - **Learn and Share**: Discover new approaches and help others by sharing your expertise.
-- **Stay Organized**: Snippets are categorized by language and purpose, so it’s easy to find what you need.
+- **Stay Organized**: Snippets are categorized by language and purpose, so it's easy to find what you need.
 
 ## Getting Started
 
@@ -69,6 +69,6 @@ pnpm build
 pnpm start
 ```
 
-## Let’s Build This Together
+## Let's Build This Together
 
 SnipNest is all about the community. Every snippet you share could be exactly what someone else needs.
