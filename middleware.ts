@@ -12,7 +12,8 @@ const rateLimit = new Ratelimit({
 export default async function middleware(request: NextRequest) {
   const ip = ipAddress(request) || "127.0.0.1";
 
-  if (ip === "127.0.0.1") return NextResponse.next();
+  if (ip === "127.0.0.1" || process.env.NODE_ENV === "development")
+    return NextResponse.next();
 
   const { success } = await rateLimit.limit(ip);
 
