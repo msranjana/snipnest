@@ -5,7 +5,7 @@ import { existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import type { SnippetMetadata } from "./types";
-import { getSnippetList, parseMetadata, toKebabCase } from "./utils";
+import { formatPath, getSnippetList, parseMetadata } from "./utils";
 
 export interface Snippet {
   language: string;
@@ -22,46 +22,59 @@ export const getSnippet: (
   language: string,
   category: string,
   name: string
-) => Promise<(Omit<Snippet, "path"> & { snippet: string }) | null> = cache(
-  async (language, category, name) => {
-    try {
-      const path = join(
-        basePath,
-        language.toLowerCase(),
-        toKebabCase(category),
-        `${toKebabCase(name)}.mdx`
-      );
+) => Promise<Snippet | null> = cache(async (language, category, name) => {
+  try {
+    const path = join(basePath, `${formatPath(language, category, name)}.mdx`);
 
-      const exists = existsSync(path);
+    const exists = existsSync(path);
 
-      if (!exists) {
-        return null;
-      }
-
-      const content = await readFile(path, { encoding: "utf-8" });
-
-      if (!content) {
-        return null;
-      }
-
-      const snippet = content.replace(
-        /export\s+const\s+metadata\s*=\s*\{[^}]*\};|(?:\\r\\n|\\n){2,}|```\w*/g,
-        ""
-      );
-
-      return {
-        language,
-        category,
-        name,
-        metadata: parseMetadata(content),
-        snippet,
-      };
-    } catch (e) {
-      console.error(e);
+    if (!exists) {
       return null;
     }
+
+    const content = await readFile(path, { encoding: "utf-8" });
+
+    if (!content) {
+      return null;
+    }
+
+    return {
+      language,
+      category,
+      name,
+      metadata: parseMetadata(content),
+    };
+  } catch (e) {
+    return null;
   }
-);
+});
+
+export const getSnippetContent: (
+  language: string,
+  category: string,
+  name: string
+) => Promise<string | null> = cache(async (language, category, name) => {
+  const path = join(basePath, `${formatPath(language, category, name)}.mdx`);
+
+  const exists = existsSync(path);
+
+  if (!exists) {
+    return null;
+  }
+
+  const content = await readFile(path, { encoding: "utf-8" });
+
+  return (
+    content
+      // todo: although this works fine for now, we need to improve this
+      .replace(
+        /export\s+const\s+metadata\s*=\s*\{[^}]*\};|(?:\r?\n){3,}|```\w*/g,
+        ""
+      )
+      .replace(/^[\r\n]+|[\r\n]+$/g, "")
+      .replace(/(?:\r\n|\n){3,}/g, "\n\n")
+  );
+});
 
 export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
   async () => {
@@ -127,9 +140,20 @@ export async function getRandomSnippet() {
   const snippetData =
     snippetList[Math.floor(Math.random() * snippetList.length)];
 
-  return await getSnippet(
+  const snippet = await getSnippet(
     snippetData.language,
     snippetData.category,
     snippetData.name
   );
+
+  const content = await getSnippetContent(
+    snippetData.language,
+    snippetData.category,
+    snippetData.name
+  );
+
+  return {
+    snippet,
+    content,
+  };
 }
