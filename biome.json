@@ -22,6 +22,9 @@
   },
   "linter": {
     "rules": {
+      "correctness": {
+        "noUnusedImports": "error"
+      },
       "complexity": {
         "noBannedTypes": "off"
       },
