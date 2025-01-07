@@ -13,7 +13,7 @@ export async function Hero() {
   const randomSnippet = await getRandomSnippet();
 
   return (
-    <div className="min-h-screen w-full flex xl:flex-row flex-col justify-between items-center xl:gap-0 gap-12">
+    <div className="h-screen w-full flex xl:flex-row flex-col xl:justify-between justify-center items-center xl:gap-0 gap-12">
       <div className="flex flex-col gap-6 text-left xl:w-[512px] w-full">
         <div className="space-y-4">
           <h1 className="lg:text-4xl text-3xl font-bold">
