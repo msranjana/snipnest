@@ -66,7 +66,7 @@ export function Navbar() {
   }, [isDrawerOpen]);
 
   return (
-    <nav className="w-full border-b border-b-border h-12 flex items-center xl:px-0 px-4 fixed bg-background z-50">
+    <nav className="w-full border-b border-b-border h-12 flex items-center 2xl:px-0 px-4 fixed bg-background z-50">
       <div className="max-w-7xl mx-auto w-full flex justify-between">
         <Link
           className="font-semibold text-lg inline-flex gap-2 items-center hover:opacity-90 transition-opacity"
