@@ -72,7 +72,7 @@ export default async function HomePage() {
                     "!size-3.5 rounded-[2px] grayscale-0 mb-0.5 mr-1.5",
                 }
               )}
-              {randomSnippet.metadata.name} snippet{" "}
+              {randomSnippet.metadata.name}
               <ArrowRightIcon className="size-3 ml-1" />
             </Link>
           </div>
