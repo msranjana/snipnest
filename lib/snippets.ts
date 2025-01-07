@@ -5,7 +5,7 @@ import { existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import type { SnippetMetadata } from "./types";
-import { parseMetadata } from "./utils";
+import { getSnippetList, parseMetadata } from "./utils";
 
 export interface Snippet {
   language: string;
@@ -18,43 +18,45 @@ export type GroupedSnippets = Record<string, Record<string, Snippet[]>>;
 
 const basePath = join(process.cwd(), "snippets");
 
-export async function getSnippet(
+export const getSnippet: (
   language: string,
   category: string,
   name: string
-): Promise<(Omit<Snippet, "path"> & { snippet: string }) | null> {
-  try {
-    const path = join(basePath, language, category, `${name}.mdx`);
+) => Promise<(Omit<Snippet, "path"> & { snippet: string }) | null> = cache(
+  async (language, category, name) => {
+    try {
+      const path = join(basePath, language, category, `${name}.mdx`);
 
-    const exists = existsSync(path);
+      const exists = existsSync(path);
 
-    if (!exists) {
+      if (!exists) {
+        return null;
+      }
+
+      const content = await readFile(path, { encoding: "utf-8" });
+
+      if (!content) {
+        return null;
+      }
+
+      const snippet = content.replace(
+        /export\s+const\s+metadata\s*=\s*\{[^}]*\};(\r\n){2}|```\w*\r\n/g,
+        ""
+      );
+
+      return {
+        language,
+        category,
+        name,
+        metadata: parseMetadata(content),
+        snippet,
+      };
+    } catch (e) {
+      console.error(e);
       return null;
     }
-
-    const content = await readFile(path, { encoding: "utf-8" });
-
-    if (!content) {
-      return null;
-    }
-
-    const snippet = content.replace(
-      /export\s+const\s+metadata\s*=\s*\{[^}]*\};(\r\n){2}|```\w*\r\n/g,
-      ""
-    );
-
-    return {
-      language,
-      category,
-      name,
-      metadata: parseMetadata(content),
-      snippet,
-    };
-  } catch (e) {
-    console.error(e);
-    return null;
   }
-}
+);
 
 export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
   async () => {
@@ -112,3 +114,17 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
     }
   }
 );
+
+export async function getRandomSnippet() {
+  const groupedSnippets = await getGroupedSnippets();
+  const snippetList = getSnippetList(groupedSnippets);
+
+  const snippetData =
+    snippetList[Math.floor(Math.random() * snippetList.length)];
+
+  return await getSnippet(
+    snippetData.language,
+    snippetData.category,
+    snippetData.name
+  );
+}
