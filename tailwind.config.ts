@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      minHeight: {
+        screen: "calc(100vh - 3rem)",
+      },
       height: {
         screen: "calc(100vh - 3rem)",
       },
