@@ -76,7 +76,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className="min-h-screen overflow-y-scroll scroll-smooth"
+      className="overflow-y-scroll scroll-smooth"
       suppressHydrationWarning
     >
       <body
@@ -89,11 +89,11 @@ export default async function RootLayout({
         <SearchProvider>
           <ThemeProvider>
             <div
-              className="flex flex-col min-h-screen bg-background text-foreground"
+              className="flex flex-col bg-background text-foreground"
               data-vaul-drawer-wrapper=""
             >
               <Navbar />
-              <div className="max-w-7xl mx-auto w-full 2xl:px-0 px-4 pt-12">
+              <div className="max-w-7xl min-h-screen mx-auto w-full 2xl:px-0 px-4 mt-12">
                 {children}
                 <SearchDialog snippetList={snippetList} />
               </div>
