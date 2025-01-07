@@ -5,7 +5,7 @@ import { existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import type { SnippetMetadata } from "./types";
-import { getSnippetList, parseMetadata } from "./utils";
+import { getSnippetList, parseMetadata, toKebabCase } from "./utils";
 
 export interface Snippet {
   language: string;
@@ -25,7 +25,12 @@ export const getSnippet: (
 ) => Promise<(Omit<Snippet, "path"> & { snippet: string }) | null> = cache(
   async (language, category, name) => {
     try {
-      const path = join(basePath, language, category, `${name}.mdx`);
+      const path = join(
+        basePath,
+        language.toLowerCase(),
+        toKebabCase(category),
+        `${toKebabCase(name)}.mdx`
+      );
 
       const exists = existsSync(path);
 
