@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { CodePreview } from "@/components/code-preview";
 
 import { getRandomSnippet } from "@/lib/snippets";
-import { toKebabCase } from "@/lib/utils";
+import { formatPath } from "@/lib/utils";
 import { createElement } from "react";
 import { LANGUAGES } from "@/lib/constants";
+
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const randomSnippet = await getRandomSnippet();
@@ -49,30 +51,33 @@ export default async function HomePage() {
             </Button>
           </div>
         </div>
-        {randomSnippet && (
+        {randomSnippet.content && randomSnippet.snippet && (
           <div className="flex flex-col gap-3 md:w-[640px] w-full">
             <div className="aspect-[5/3] w-[inherit] rounded-lg bg-accent border border-border overflow-hidden md:pt-12 pt-4 md:pl-12 pl-4 relative">
               <CodePreview
-                code={`\`\`\`ts\n${randomSnippet.snippet}\n\`\`\``}
+                code={`\`\`\`ts\n${randomSnippet.content}\n\`\`\``}
               />
             </div>
             <Link
               className="text-xs text-muted-foreground ml-auto pr-4 inline-flex items-center hover:underline"
-              href={`/snippets/${randomSnippet.language.toLowerCase()}/${toKebabCase(
-                randomSnippet.category
-              )}/${toKebabCase(randomSnippet.name)}`}
+              href={`/snippets/${formatPath(
+                randomSnippet.snippet.language,
+                randomSnippet.snippet.category,
+                randomSnippet.snippet.name
+              )}`}
             >
               {createElement(
                 LANGUAGES.find(
                   (language) =>
-                    language.value === randomSnippet.language.toLowerCase()
+                    language.value ===
+                    randomSnippet.snippet!.language.toLowerCase()
                 )!.icon,
                 {
                   className:
                     "!size-3.5 rounded-[2px] grayscale-0 mb-0.5 mr-1.5",
                 }
               )}
-              {randomSnippet.metadata.name}
+              {randomSnippet.snippet.metadata.name}
               <ArrowRightIcon className="size-3 ml-1" />
             </Link>
           </div>
