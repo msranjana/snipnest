@@ -8,26 +8,23 @@ The API has a rate limit of **100 requests per minute**. If you exceed this limi
 
 ## Endpoints
 
-### `GET` /api/[language]/[category]/[name]
+#### `GET` /api/languages
 
-Fetches a specific snippet based on language, category, and name.
+Returns all programming languages available.
 
 ```json
-{
-  "language": "string",
-  "category": "string",
-  "name": "string",
-  "metadata": {
-    "name": "string",
-    "description": "string",
-    "keywords": ["string"],
-    "contributors": ["string"]
-  },
-  "snippet": "string"
-}
+["string"]
 ```
 
-### `GET` /api/[language]/[category]
+#### `GET` /api/[language]
+
+Returns all categories available for a specific programming language.
+
+```json
+["string"]
+```
+
+#### `GET` /api/[language]/[category]
 
 Returns all snippets in a specific category.
 
@@ -47,15 +44,33 @@ Returns all snippets in a specific category.
 ]
 ```
 
-### `GET` /api/[language]
+#### `GET` /api/[language]/[category]/[name]
 
-Returns all categories available for a specific programming language.
+Returns a specific snippet based on language, category, and name.
 
 ```json
-["string"]
+{
+  "language": "string",
+  "category": "string",
+  "name": "string",
+  "metadata": {
+    "name": "string",
+    "description": "string",
+    "keywords": ["string"],
+    "contributors": ["string"]
+  }
+}
 ```
 
-### `GET` /api/search?query=[query]
+#### `GET` /api/[language]/[category]/[name]/raw
+
+Returns a specific snippet's content based on language, category, and name.
+
+```text
+string
+```
+
+#### `GET` /api/search?query=[query]
 
 Performs full-text search across all snippets.
 
