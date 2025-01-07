@@ -71,6 +71,7 @@ export function Navbar() {
         <Link
           className="font-semibold text-lg inline-flex gap-2 items-center hover:opacity-90 transition-opacity"
           href="/"
+          title={`SnipNest v${process.env.VERSION}`}
         >
           <Logo />
           SnipNest
