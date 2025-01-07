@@ -43,6 +43,15 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
+    tags: [
+      "snippets",
+      "code",
+      "community",
+      "share",
+      "tool",
+      "useful",
+      "development",
+    ],
     images: [
       {
         url: "/banner.png",
@@ -84,7 +93,7 @@ export default async function RootLayout({
               data-vaul-drawer-wrapper=""
             >
               <Navbar />
-              <div className="max-w-7xl mx-auto w-full xl:px-0 px-4 pt-12">
+              <div className="max-w-7xl mx-auto w-full 2xl:px-0 px-4 pt-12">
                 {children}
                 <SearchDialog snippetList={snippetList} />
               </div>
