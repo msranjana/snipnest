@@ -27,7 +27,7 @@ function SidebarMargin({
   return (
     <div
       className={cn(
-        "flex flex-col gap-6 lg:ml-80 ml-0 w-full lg:pl-6 pl-0 py-6",
+        "flex flex-col gap-6 lg:ml-80 ml-0 w-full lg:pl-6 pl-0",
         className
       )}
     >
@@ -60,45 +60,43 @@ export function GroupedSnippetsContent({
 
   return (
     <SidebarMargin>
-      <Breadcrumb>
-        <BreadcrumbList>
-          {pathname.length > 1 && (
-            <>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/snippets">Snippets</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-            </>
-          )}
-          <BreadcrumbItem>
-            {pathname.length === 1 ? (
-              <BreadcrumbPage>{languageName}</BreadcrumbPage>
-            ) : (
-              <BreadcrumbLink href={languageLink}>
-                {languageName}
-              </BreadcrumbLink>
+      {pathname.length > 1 && (
+        <Breadcrumb className="pt-6">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/snippets">Snippets</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              {pathname.length === 1 ? (
+                <BreadcrumbPage>{languageName}</BreadcrumbPage>
+              ) : (
+                <BreadcrumbLink href={languageLink}>
+                  {languageName}
+                </BreadcrumbLink>
+              )}
+            </BreadcrumbItem>
+            {pathname.length > 2 && <BreadcrumbSeparator />}
+            <BreadcrumbItem>
+              {pathname.length === 3 ? (
+                <BreadcrumbPage>{categoryName}</BreadcrumbPage>
+              ) : (
+                <BreadcrumbLink href={categoryLink}>
+                  {categoryName}
+                </BreadcrumbLink>
+              )}
+            </BreadcrumbItem>
+            {pathname.length === 4 && (
+              <>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{snippetName}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </>
             )}
-          </BreadcrumbItem>
-          {pathname.length > 2 && <BreadcrumbSeparator />}
-          <BreadcrumbItem>
-            {pathname.length === 3 ? (
-              <BreadcrumbPage>{categoryName}</BreadcrumbPage>
-            ) : (
-              <BreadcrumbLink href={categoryLink}>
-                {categoryName}
-              </BreadcrumbLink>
-            )}
-          </BreadcrumbItem>
-          {pathname.length === 4 && (
-            <>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{snippetName}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </>
-          )}
-        </BreadcrumbList>
-      </Breadcrumb>
+          </BreadcrumbList>
+        </Breadcrumb>
+      )}
       <div className="flex flex-col gap-4">{children}</div>
     </SidebarMargin>
   );
