@@ -45,7 +45,7 @@ export const getSnippet: (
       }
 
       const snippet = content.replace(
-        /export\s+const\s+metadata\s*=\s*\{[^}]*\};(\r\n){2}|```\w*\r\n/g,
+        /export\s+const\s+metadata\s*=\s*\{[^}]*\};|(?:\\r\\n|\\n){2,}|```\w*/g,
         ""
       );
 
