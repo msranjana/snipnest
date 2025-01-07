@@ -1,6 +1,6 @@
 "use client";
 
-import { notFound, useParams, usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 import type { SnippetParams } from "@/app/snippets/[language]/[category]/[name]/page";
 
