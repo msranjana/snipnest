@@ -104,3 +104,7 @@ export function parseMetadata(code: string): SnippetMetadata {
     contributors: parsedContributors,
   };
 }
+
+export function formatPath(language: string, category: string, name: string) {
+  return `${language.toLowerCase()}/${toKebabCase(category)}/${toKebabCase(name)}`;
+}
