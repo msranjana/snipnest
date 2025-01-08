@@ -1,0 +1,16 @@
+export const metadata = {
+  name: "Random Element",
+  description: "Returns a random element from an array.",
+  keywords: ["array", "random"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function randomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+```
+
+```js
+randomItem([1, 2, 3, 4, 5]); // 3
+```
