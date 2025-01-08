@@ -1,5 +1,6 @@
 import Javascript from "devicons-react/lib/icons/JavascriptOriginal";
 import Typescript from "devicons-react/lib/icons/TypescriptOriginal";
+import Rust from "devicons-react/lib/icons/RustOriginal";
 import React from "devicons-react/lib/icons/ReactOriginal";
 
 /**
@@ -10,11 +11,19 @@ export const LANGUAGES = [
     name: "JavaScript",
     value: "javascript",
     icon: Javascript,
+    isColored: true,
   },
   {
     name: "TypeScript",
     value: "typescript",
     icon: Typescript,
+    isColored: true,
+  },
+  {
+    name: "Rust",
+    value: "rust",
+    icon: Rust,
+    isColored: false,
   },
   /**
    * Languages below aren't languages, but for the
@@ -24,5 +33,6 @@ export const LANGUAGES = [
     name: "React",
     value: "react",
     icon: React,
+    isColored: true,
   },
 ];
