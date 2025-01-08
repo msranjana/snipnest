@@ -6,11 +6,16 @@ import { CodePreview } from "@/components/code-preview";
 
 import { getRandomSnippet } from "@/lib/snippets";
 import { formatPath } from "@/lib/utils";
-import { createElement } from "react";
 import { LANGUAGES } from "@/lib/constants";
+
+import { LanguageIcon } from "../icons/language";
 
 export async function Hero() {
   const randomSnippet = await getRandomSnippet();
+
+  const randomSnippetLanguage = LANGUAGES.find(
+    (x) => x.value === randomSnippet.snippet!.language.toLowerCase()
+  )!;
 
   return (
     <div className="h-screen w-full flex xl:flex-row flex-col xl:justify-between justify-center items-center xl:gap-0 gap-12">
@@ -61,16 +66,11 @@ export async function Hero() {
               randomSnippet.snippet.name
             )}`}
           >
-            {createElement(
-              LANGUAGES.find(
-                (language) =>
-                  language.value ===
-                  randomSnippet.snippet!.language.toLowerCase()
-              )!.icon,
-              {
-                className: "!size-3.5 rounded-[2px] grayscale-0 mb-0.5 mr-1.5",
-              }
-            )}
+            <LanguageIcon
+              icon={randomSnippetLanguage!.icon}
+              isColored={randomSnippetLanguage!.isColored}
+              className="size-3.5 mb-0.5 mr-1.5"
+            />
             {randomSnippet.snippet.metadata.name}
             <ArrowRightIcon className="size-3 ml-1" />
           </Link>
