@@ -1,0 +1,19 @@
+export const metadata = {
+  name: "RGB to Hex",
+  description: "Converts RGB values to a hex color.",
+  keywords: ["color", "hex", "rgb"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function rgbToHex(r, g, b) {
+  return `#${((1 << 24) | (r << 16) | (g << 8) | b)
+    .toString(16)
+    .slice(1)
+    .toUpperCase()}`;
+}
+```
+
+```js
+rgbToHex(255, 99, 71); // #ff6347
+```
