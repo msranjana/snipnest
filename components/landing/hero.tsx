@@ -56,7 +56,9 @@ export async function Hero() {
       {randomSnippet.content && randomSnippet.snippet && (
         <div className="flex flex-col gap-3 md:w-[640px] w-full">
           <div className="aspect-[5/3] w-[inherit] rounded-lg bg-accent border border-border overflow-hidden md:pt-12 pt-4 md:pl-12 pl-4 relative">
-            <CodePreview code={`\`\`\`ts\n${randomSnippet.content}\n\`\`\``} />
+            <CodePreview
+              code={`\`\`\`${randomSnippetLanguage.value}\n${randomSnippet.content}\n\`\`\``}
+            />
           </div>
           <Link
             className="text-xs text-muted-foreground ml-auto pr-4 inline-flex items-center hover:underline"
