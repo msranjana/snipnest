@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useSearch } from "@/hooks/use-search";
 
 import { ThemeToggle } from "./theme/toggle";
-import { GitHubIcon } from "./github-icon";
+import { GitHubIcon } from "./icons/github";
 import {
   Drawer,
   DrawerContent,
