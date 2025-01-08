@@ -97,7 +97,7 @@ export function GroupedSnippetsContent({
           </BreadcrumbList>
         </Breadcrumb>
       )}
-      <div className="flex flex-col gap-4">{children}</div>
+      <div className="flex flex-col gap-4 pb-6">{children}</div>
     </SidebarMargin>
   );
 }
