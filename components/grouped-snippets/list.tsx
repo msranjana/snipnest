@@ -1,6 +1,6 @@
 "use client";
 
-import { createElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
@@ -21,18 +21,7 @@ import {
 } from "../extendui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
-
-function LanguageIcon({
-  icon,
-  isColored,
-}: {
-  icon: React.FunctionComponent<{ className: string }>;
-  isColored: boolean;
-}) {
-  return createElement(icon, {
-    className: cn("size-4 rounded-[2px]", !isColored && "fill-foreground"),
-  });
-}
+import { LanguageIcon } from "../icons/language";
 
 function SelectMenu({
   languages,
