@@ -22,6 +22,18 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 
+function LanguageIcon({
+  icon,
+  isColored,
+}: {
+  icon: React.FunctionComponent<{ className: string }>;
+  isColored: boolean;
+}) {
+  return createElement(icon, {
+    className: cn("size-4 rounded-[2px]", !isColored && "fill-foreground"),
+  });
+}
+
 function SelectMenu({
   languages,
   languageValue,
@@ -40,9 +52,10 @@ function SelectMenu({
 
     return (
       <div className="flex items-center gap-2">
-        {createElement(language!.icon, {
-          className: "size-4 rounded-[2px]",
-        })}
+        <LanguageIcon
+          icon={language!.icon}
+          isColored={language!.isColored}
+        />
         {language?.name}
       </div>
     );
@@ -104,9 +117,10 @@ function SelectMenu({
                         }}
                       >
                         <div className="flex items-center gap-2">
-                          {createElement(language.icon, {
-                            className: "size-4 rounded-[2px]",
-                          })}
+                          <LanguageIcon
+                            icon={language!.icon}
+                            isColored={language!.isColored}
+                          />
                           {language.name}
                         </div>
                         <CheckIcon
@@ -166,7 +180,12 @@ export function GroupedSnippetsList({
           .map((category) => (
             <Button
               className="w-full justify-between"
-              variant={params.category === category ? "default" : "ghost"}
+              variant={
+                params.category === category &&
+                params.language === currentLanguage
+                  ? "default"
+                  : "ghost"
+              }
               size="sm"
               key={category}
               asChild
@@ -176,7 +195,10 @@ export function GroupedSnippetsList({
                 <span
                   className={cn(
                     "text-sm font-normal tabular-nums",
-                    params.category !== category ? "text-muted-foreground" : ""
+                    params.category !== category ||
+                      params.language !== currentLanguage
+                      ? "text-muted-foreground"
+                      : ""
                   )}
                 >
                   {groupedSnippets[currentLanguage][category].length}
