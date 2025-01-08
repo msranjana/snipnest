@@ -40,7 +40,7 @@ export async function Hero() {
             asChild
           >
             <Link
-              href="https://github.com/itsbrunodev/snipnest/blob/main/CONTRIBUTING.md#snippet-guidelines"
+              href="https://github.com/itsbrunodev/snipnest/blob/main/CONTRIBUTING.md"
               target="_blank"
             >
               Submit a Snippet
