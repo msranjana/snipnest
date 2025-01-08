@@ -1,0 +1,16 @@
+export const metadata = {
+  name: "Capitalize Words",
+  description: "Capitalizes the first letter of each word in a string.",
+  keywords: ["string", "casing"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function capitalizeWords(str) {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+```
+
+```js
+capitalizeWords("hello world"); // "Hello World"
+```

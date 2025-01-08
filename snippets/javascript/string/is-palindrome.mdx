@@ -1,0 +1,18 @@
+export const metadata = {
+  name: "Is Palindrome",
+  description: "Determine whether a string is a palindrome.",
+  keywords: ["string", "palindrome"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function isPalindrome(str) {
+  const normalized = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return normalized === normalized.split("").reverse().join("");
+}
+```
+
+```js
+isPalindrome("never odd or even"); // true
+isPalindrome("race a car"); // false
+```
