@@ -1,0 +1,21 @@
+export const metadata = {
+  name: "GCD",
+  description: "Calculates the greatest common divisor (GCD) of two numbers.",
+  keywords: ["math", "gcd"],
+  contributors: ["itsbrunodev"],
+};
+
+```rust
+fn gcd(mut a: u32, mut b: u32) -> u32 {
+    while b != 0 {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    a
+}
+```
+
+```rust
+gcd(10, 15); // 5
+```
