@@ -161,27 +161,29 @@ export function GroupedSnippetsList({
         <p className="text-muted-foreground text-xs font-medium mb-2">
           Categories
         </p>
-        {Object.keys(groupedSnippets[currentLanguage]).map((category) => (
-          <Button
-            className="w-full justify-between"
-            variant={params.category === category ? "default" : "ghost"}
-            size="sm"
-            key={category}
-            asChild
-          >
-            <Link href={`/snippets/${currentLanguage}/${category}`}>
-              <span>{toTitleCase(category)}</span>
-              <span
-                className={cn(
-                  "text-sm font-normal tabular-nums",
-                  params.category !== category ? "text-muted-foreground" : ""
-                )}
-              >
-                {groupedSnippets[currentLanguage][category].length}
-              </span>
-            </Link>
-          </Button>
-        ))}
+        {Object.keys(groupedSnippets[currentLanguage])
+          .sort()
+          .map((category) => (
+            <Button
+              className="w-full justify-between"
+              variant={params.category === category ? "default" : "ghost"}
+              size="sm"
+              key={category}
+              asChild
+            >
+              <Link href={`/snippets/${currentLanguage}/${category}`}>
+                <span>{toTitleCase(category)}</span>
+                <span
+                  className={cn(
+                    "text-sm font-normal tabular-nums",
+                    params.category !== category ? "text-muted-foreground" : ""
+                  )}
+                >
+                  {groupedSnippets[currentLanguage][category].length}
+                </span>
+              </Link>
+            </Button>
+          ))}
       </div>
     </div>
   );
