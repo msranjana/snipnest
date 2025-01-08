@@ -1,0 +1,19 @@
+export const metadata = {
+  name: "Is Leap Year",
+  description: "Determines if a given year is a leap year.",
+  keywords: ["date", "leap-year", "check"],
+  contributors: ["itsbrunodev"],
+};
+
+```js
+function isLeapYear(year) {
+  if (year % 4 !== 0) return false;
+  if (year % 100 === 0 && year % 400 !== 0) return false;
+  return true;
+}
+```
+
+```js
+isLeapYear(2024); // true
+isLeapYear(2023); // false
+```
