@@ -58,7 +58,7 @@ Your snippet must have **two code blocks**:
    Example:
 
    ````markdown
-   ```js
+   ```javascript
    const add = (a, b) => a + b;
    ```
    ````
@@ -68,7 +68,7 @@ Your snippet must have **two code blocks**:
    Example:
 
    ````markdown
-   ```js
+   ```javascript
    add(2, 3); // 5
    ```
    ````
