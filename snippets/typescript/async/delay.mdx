@@ -5,13 +5,13 @@ export const metadata = {
   contributors: ["itsbrunodev"],
 };
 
-```ts
+```typescript
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 ```
 
-```ts
+```typescript
 (async () => {
   console.log("Start"); // Start
   await delay(1000); // Wait for 1 second

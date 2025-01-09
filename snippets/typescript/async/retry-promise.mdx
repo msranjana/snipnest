@@ -6,7 +6,7 @@ export const metadata = {
   contributors: ["itsbrunodev"],
 };
 
-```ts
+```typescript
 async function retryPromise<T>(
   fn: () => Promise<T>,
   maxAttempts: number = 3, // Retry 3 times by default
@@ -28,7 +28,7 @@ async function retryPromise<T>(
 }
 ```
 
-```ts
+```typescript
 // Mock function
 async function fetchData() {
   if (Math.random() > 0.7) return "Success!";

@@ -5,14 +5,14 @@ export const metadata = {
   contributors: ["itsbrunodev"],
 };
 
-```js
+```javascript
 function isPalindrome(str) {
   const normalized = str.toLowerCase().replace(/[^a-z0-9]/g, "");
   return normalized === normalized.split("").reverse().join("");
 }
 ```
 
-```js
+```javascript
 isPalindrome("never odd or even"); // true
 isPalindrome("race a car"); // false
 ```

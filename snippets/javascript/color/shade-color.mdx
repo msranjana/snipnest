@@ -5,7 +5,7 @@ export const metadata = {
   contributors: ["itsbrunodev"],
 };
 
-```js
+```javascript
 export function shadeColor(color, decimal) {
   const base = color.startsWith("#") ? 1 : 0;
 
@@ -32,7 +32,7 @@ export function shadeColor(color, decimal) {
 }
 ```
 
-```js
+```javascript
 shadeColor("#265c98", 1.5); // #193d65 - darken the color by 50%
 shadeColor("#265c98", 0.5); // #4cb8ff - lighten the color by 50%
 ```
