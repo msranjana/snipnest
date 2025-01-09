@@ -76,7 +76,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className="overflow-y-scroll scroll-smooth"
+      className="scroll-smooth"
       suppressHydrationWarning
     >
       <body
