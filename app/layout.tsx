@@ -25,7 +25,7 @@ import "./globals.css";
 import "./highlight.css";
 
 export const metadata: Metadata = {
-  title: "SnipNest",
+  title: "SnipNest - Open-source code snippet collection",
   description:
     "Stuck on something? Find ready-to-use snippets that actually work. Got a cool solution? Share it and help someone out. It's like trading ideas, but for code.",
   icons: {
