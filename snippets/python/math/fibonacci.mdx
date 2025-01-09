@@ -1,0 +1,23 @@
+export const metadata = {
+  name: "Fibonacci Sequence",
+  description: "Generates a Fibonacci sequence of a given length.",
+  keywords: ["math", "fibonacci"],
+  contributors: ["itsbrunodev"],
+};
+
+```python
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+```
+
+```python
+arr = []
+
+for num in fibonacci(10):
+    arr.append(num)
+
+# [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+```
