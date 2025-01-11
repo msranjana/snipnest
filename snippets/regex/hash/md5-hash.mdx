@@ -1,0 +1,19 @@
+export const metadata = {
+  name: "MD5 Hash",
+  description: "Matches a valid MD5 hash.",
+  keywords: ["md5", "hash"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+^[a-fA-F0-9]{32}$
+```
+
+```sh
+# Valid MD5 Hashes
+abcdef0123456789abcdef0123456789
+ABCDEF0123456789ABCDEF0123456789
+
+# Invalid MD5 Hashes
+abcdef0123456789abcdef
+```

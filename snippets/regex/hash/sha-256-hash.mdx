@@ -1,0 +1,20 @@
+export const metadata = {
+  name: "SHA-256 Hash",
+  description: "Matches a valid SHA-256 hash.",
+  keywords: ["sha-256", "hash"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+^[a-fA-F0-9]{64}$
+```
+
+```sh
+# Valid SHA-256 Hashes
+abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789
+ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789
+
+# Invalid SHA-256 Hashes
+abcdef0123456789abcdef
+abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+```
