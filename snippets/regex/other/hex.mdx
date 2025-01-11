@@ -1,0 +1,24 @@
+export const metadata = {
+  name: "Hex Color Validation",
+  description:
+    "Matches any hex color with #rgb, #rgba, #rrggbb, and #rrggbbaa formats.",
+  keywords: ["hex", "color"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+^#(?:(?:[\da-f]{3}){1,2}|(?:[\da-f]{4}){1,2})$
+```
+
+```md
+# Valid Hex Colors
+#fff
+#fff5
+#ffffff
+#ffffff50
+
+# Invalid Hex Colors
+#f
+#ff
+#fffff
+```

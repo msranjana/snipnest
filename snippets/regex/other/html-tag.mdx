@@ -1,0 +1,16 @@
+export const metadata = {
+  name: "HTML Tag",
+  description: "Matches a valid HTML tag.",
+  keywords: ["html", "tag"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+<(?<tag>[a-z]+)(?<attribute>\s+[a-z-]+="[^"]*")*\s*>(?<content>.*?)<\/\1>
+```
+
+```html
+<!-- Valid HTML Tags -->
+<div>Content</div>
+<a href="#">Link</a>
+```

@@ -1,0 +1,20 @@
+export const metadata = {
+  name: "Email Validation",
+  description: "Matches any valid email address.",
+  keywords: ["email", "address"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+^\S+@\S+\.\S{2,}$
+```
+
+```sh
+# Valid Emails
+user@example.com
+user+tag@example.com
+
+# Invalid Emails
+@missingusername.com
+user@example.c
+```
