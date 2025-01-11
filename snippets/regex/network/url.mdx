@@ -1,0 +1,26 @@
+export const metadata = {
+  name: "URL Validation",
+  description: 'Matches a valid URL with or without "www".',
+  keywords: ["url", "network"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+^(?P<protocol>https?):\/\/(?P<domain>[a-zA-Z0-9.-]+)(?::(?P<port>\d+))?(?P<path>\/[^\s]*)?$
+```
+
+```sh
+# Valid URLs
+https://example.com
+https://www.example.com
+http://example.com
+https://www.example.com
+https://example.com/path
+https://www.example.com/path
+https://www.example.com/path?q=query&s=anotherquery
+
+# Invalid URLs
+example.com
+www.example.com
+ftp://example.com
+```

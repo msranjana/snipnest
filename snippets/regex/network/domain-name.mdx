@@ -1,0 +1,23 @@
+export const metadata = {
+  name: "Domain Name",
+  description: "Matches a valid domain name.",
+  keywords: ["domain-name", "domain", "network"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}$
+```
+
+```sh
+# Valid domain names
+example.com
+sub.example.co.uk
+example-domain.com
+subdomain.example.com
+
+# Invalid domain names
+-example.com
+example..com
+example.c
+```
