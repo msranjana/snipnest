@@ -7,7 +7,7 @@ import { notFound, useParams } from "next/navigation";
 
 import type { GroupedSnippets } from "@/lib/snippets";
 import { cn, toTitleCase } from "@/lib/utils";
-import { LANGUAGES } from "@/lib/constants";
+import { LANGUAGES } from "@/lib/languages";
 
 import type { SnippetParams } from "@/app/snippets/[language]/[category]/[name]/page";
 

@@ -6,7 +6,7 @@ import { CodePreview } from "@/components/code-preview";
 
 import { getRandomSnippet } from "@/lib/snippets";
 import { formatPath } from "@/lib/utils";
-import { LANGUAGES } from "@/lib/constants";
+import { LANGUAGES } from "@/lib/languages";
 
 import { LanguageIcon } from "../icons/language";
 
