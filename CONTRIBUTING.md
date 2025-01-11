@@ -109,7 +109,7 @@ If you're unsure whether you should submit such a snippet, submit it anyway and 
 1. Create a new folder in `snippets/` with the language name in lowercase.
    - For example: `javascript`, `python`, `cpp`.
 2. Add categories and snippets as needed.
-3. Update the list of languages in `lib/constants.tsx`. (optional)
+3. Update the list of languages in `lib/languages.ts`. (strictly only use icons from the `devicons-react` package just like other icons or `lucide-react`)
 
 ### New Category
 
