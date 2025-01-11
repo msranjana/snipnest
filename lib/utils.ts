@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 import type { GroupedSnippets, Snippet } from "./snippets";
-import { LANGUAGES } from "./constants";
+import { LANGUAGES } from "./languages";
 import type { RegexGroups, SnippetMetadata } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
@@ -71,7 +71,7 @@ export function formatLanguage(language: string) {
 }
 
 export const METADATA_REGEX =
-  /export\s+const\s+metadata\s*=\s*{\s*(?:name:\s*"(?<name>[^"]+)",\s*description:\s*"(?<description>[^"]+)",\s*keywords:\s*\[(?<keywords>(?:\s*"[^"]+"\s*,?\s*)*)\],\s*contributors:\s*\[(?<contributors>(?:\s*"[^"]+"\s*,?\s*)*)\]\s*,?\s*)}/;
+  /export\s+const\s+metadata\s*=\s*{\s*(?:name:\s*(?:"|')(?<name>.*)(?:"|'),\s*description:\s*(?:"|')(?<description>.*)(?:"|'),\s*keywords:\s*\[(?<keywords>(?:\s*"[^"]+"\s*,?\s*)*)\],\s*contributors:\s*\[(?<contributors>(?:\s*"[^"]+"\s*,?\s*)*)\]\s*,?\s*)}/;
 
 export function parseMetadata(code: string): SnippetMetadata {
   const match = code.match(METADATA_REGEX);
