@@ -1,0 +1,18 @@
+export const metadata = {
+  name: "UUID",
+  description: "Matches a valid UUID.",
+  keywords: ["uuid", "guid"],
+  contributors: ["itsbrunodev"],
+};
+
+```regex
+^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+```
+
+```sh
+# Valid UUIDs
+123a4567-b09b-12c3-d456-426614174f00
+
+# Invalid UUIDs
+123a4567-b09b-12c3-d456-426614174f0
+```
