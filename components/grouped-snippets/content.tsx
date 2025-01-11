@@ -4,7 +4,7 @@ import { useParams, usePathname } from "next/navigation";
 
 import type { SnippetParams } from "@/app/snippets/[language]/[category]/[name]/page";
 
-import { LANGUAGES } from "@/lib/constants";
+import { LANGUAGES } from "@/lib/languages";
 import { cn, toTitleCase } from "@/lib/utils";
 import type { Snippet } from "@/lib/snippets";
 
@@ -27,7 +27,7 @@ function SidebarMargin({
   return (
     <div
       className={cn(
-        "flex flex-col gap-6 lg:ml-80 ml-0 w-full lg:pl-6 pl-0",
+        "flex flex-col gap-6 lg:ml-80 ml-0 lg:w-[calc(100%-20rem)] w-full lg:pl-6 pl-0",
         className
       )}
     >
