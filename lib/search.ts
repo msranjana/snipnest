@@ -12,5 +12,6 @@ export function search(query: string, snippetList: Snippet[]) {
       (o) => o.metadata.contributors.join(", "),
       (o) => o.metadata.keywords.join(", "),
     ],
+    threshold: 0.5,
   });
 }
