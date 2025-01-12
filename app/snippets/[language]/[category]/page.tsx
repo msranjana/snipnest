@@ -41,7 +41,7 @@ export default async function SnippetCategoryPage({ params }: SnippetParams) {
     <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
       {snippetsOfCategory.map((snippet) => (
         <Link
-          className="w-full bg-card hover:opacity-80 transition-opacity rounded-md border border-border shadow-sm dark:shadow-none"
+          className="w-full bg-card hover:bg-accent/30 dark:hover:bg-accent/50 transition-colors rounded-md border border-border shadow-sm dark:shadow-none"
           href={`/snippets/${language}/${category}/${snippet.name}`}
           key={snippet.metadata.name}
         >
