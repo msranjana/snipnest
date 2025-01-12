@@ -77,7 +77,11 @@ export default async function RootLayout({
   const snippetList = getSnippetList(groupedSnippets);
 
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="scroll-smooth"
+      suppressHydrationWarning
+    >
       <body
         className={cn(
           "antialiased bg-zinc-300 dark:bg-black",
