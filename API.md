@@ -1,32 +1,32 @@
 # API Documentation
 
-Welcome to the SnipNest API! This documentation outlines the available endpoints and their structure. Use these endpoints to retrieve snippets, categories, or languages for your projects.
+Here's everything you need to know about using the SnipNest API.
 
-## Rate Limiting
+## 🚦 Rate Limit
 
-The API has a rate limit of **100 requests per minute**. If you exceed this limit, you will receive a 429 (Too Many Requests) response.
+You can make up to **100 requests per minute**. If you go over that, you'll get a 429 error.
 
-## Endpoints
+## 🔗 Available Endpoints
 
-#### `GET` /api/languages
+### `GET` [/api/languages](https://snipnest.dev/api/languages)
 
-Returns all programming languages available.
-
-```json
-["string"]
-```
-
-#### `GET` /api/[language]
-
-Returns all categories available for a specific programming language.
+Gives you a list of all programming languages we support, as an array of strings.
 
 ```json
 ["string"]
 ```
 
-#### `GET` /api/[language]/[category]
+### `GET` [/api/[language]](https://snipnest.dev/api/[language])
 
-Returns all snippets in a specific category.
+Shows you all categories for a specific language, as an array of strings.
+
+```json
+["string"]
+```
+
+### `GET` [/api/[language]/[category]](https://snipnest.dev/api/[language]/[category])
+
+Lists all snippets in a category.
 
 ```json
 [
@@ -44,9 +44,9 @@ Returns all snippets in a specific category.
 ]
 ```
 
-#### `GET` /api/[language]/[category]/[name]
+### `GET` [/api/[language]/[category]/[name]](https://snipnest.dev/api/[language]/[category]/[name])
 
-Returns a specific snippet based on language, category, and name.
+Returns a single snippet with all its details.
 
 ```json
 {
@@ -62,17 +62,18 @@ Returns a specific snippet based on language, category, and name.
 }
 ```
 
-#### `GET` /api/[language]/[category]/[name]/raw
+### `GET` [/api/[language]/[category]/[name]/raw](https://snipnest.dev/api/[language]/[category]/[name]/raw)
 
-Returns a specific snippet's content based on language, category, and name.
+Just the code, nothing else.
 
 ```text
-string
+function delay(ms: number): Promise<void> {
+  ...
 ```
 
-#### `GET` /api/search?query=[query]
+### `GET` [/api/search?query=[query]](https://snipnest.dev/api/search?query=[query])
 
-Performs full-text search across all snippets.
+Find snippets across the whole site. Works with names, descriptions, and keywords.
 
 ```json
 [
@@ -90,11 +91,13 @@ Performs full-text search across all snippets.
 ]
 ```
 
-## Error Responses
+## 🚨 Errors
+
+Every endpoint which has an error will return an object like this:
 
 ```json
 {
-  "status": "number",
-  "message": "string"
+  "status": 404,
+  "message": "Snippet not found."
 }
 ```
