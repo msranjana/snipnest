@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://snipnest.dev/sitemap.xml
