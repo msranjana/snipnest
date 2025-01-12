@@ -68,7 +68,7 @@ export function GroupedSnippetsContent({
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              {pathname.length === 1 ? (
+              {pathname.length === 2 ? (
                 <BreadcrumbPage>{languageName}</BreadcrumbPage>
               ) : (
                 <BreadcrumbLink href={languageLink}>
