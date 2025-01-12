@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -132,11 +134,11 @@ export function handleApiError(error: unknown) {
   if (error instanceof Error) {
     const status = (error.cause as { status: number }).status;
 
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         status,
         message: error.message || "Not found.",
-      }),
+      },
       {
         status,
       }
@@ -146,7 +148,7 @@ export function handleApiError(error: unknown) {
   // An unknown error occurred
   console.error(error);
 
-  return new Response(
+  return NextResponse.json(
     JSON.stringify({
       status: 500,
       message: "Something went wrong.",

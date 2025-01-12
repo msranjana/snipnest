@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { getGroupedSnippets } from "@/lib/snippets";
 import { getSnippetList, handleApiError } from "@/lib/utils";
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
     const results = search(query, snippetList).map((result) => result.obj);
 
-    return new Response(JSON.stringify(results), {
+    return NextResponse.json(results, {
       status: 200,
     });
   } catch (error) {

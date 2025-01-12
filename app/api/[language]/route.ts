@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 import { getGroupedSnippets } from "@/lib/snippets";
 import { handleApiError } from "@/lib/utils";
 
@@ -11,7 +13,7 @@ export async function GET(_: unknown, { params }: SnippetParams) {
 
     const languageCategories = Object.keys(groupedSnippets[language]);
 
-    return new Response(JSON.stringify(languageCategories), {
+    return NextResponse.json(languageCategories, {
       status: 200,
     });
   } catch (error) {
