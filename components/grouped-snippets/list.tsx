@@ -152,7 +152,12 @@ export function GroupedSnippetsList({
   }
 
   return (
-    <div className="flex flex-col gap-4 lg:pl-1 pl-4 p-4 lg:w-80 w-full lg:h-screen h-80 lg:fixed static overflow-y-auto lg:bg-transparent bg-card lg:mt-0 mt-4 lg:rounded-none rounded-md border-r lg:border-y-0 border-y lg:border-l-0 border-l border-border">
+    <div
+      className="flex flex-col gap-4 lg:pl-1 pl-4 p-4 lg:w-80 w-full lg:h-screen h-80 lg:fixed static overflow-y-auto lg:bg-transparent bg-card lg:mt-0 mt-4 lg:rounded-none rounded-md border-r lg:border-y-0 border-y lg:border-l-0 border-l border-border shadow-sm dark:shadow-none"
+      style={{
+        clipPath: "inset(-5px -5px -5px 0px)",
+      }}
+    >
       <div className="pb-4 border-b border-border w-full">
         <SelectMenu
           languages={Object.keys(groupedSnippets) as (keyof GroupedSnippets)[]}

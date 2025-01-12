@@ -25,9 +25,8 @@ export async function Hero() {
             Code Smarter, Not Harder.
           </h1>
           <p className="lg:text-lg text-base text-muted-foreground">
-            Stuck on something? Find ready-to-use snippets that actually work.
-            Got a cool solution? Share it and help someone out. It's like
-            trading ideas, but for code.
+            Need code that works? Grab a snippet. Made something cool? Share it
+            back. Simple as that.
           </p>
         </div>
         <div className="flex gap-4">
@@ -55,9 +54,11 @@ export async function Hero() {
       </div>
       {randomSnippet.content && randomSnippet.snippet && (
         <div className="flex flex-col gap-3 md:w-[640px] w-full">
-          <div className="aspect-[5/3] w-[inherit] rounded-lg bg-accent border border-border overflow-hidden md:pt-12 pt-4 md:pl-12 pl-4 relative">
+          <div className="aspect-[5/3] w-[inherit] rounded-lg bg-accent border border-border overflow-hidden md:pt-12 pt-4 md:pl-12 pl-4 relative shadow-sm dark:shadow-none">
             <CodePreview
-              code={`\`\`\`${randomSnippetLanguage.value}\n${randomSnippet.content}\n\`\`\``}
+              code={`\`\`\`${
+                randomSnippetLanguage?.alias || randomSnippetLanguage.value
+              }\n${randomSnippet.content}\n\`\`\``}
             />
           </div>
           <Link

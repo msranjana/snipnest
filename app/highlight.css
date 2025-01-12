@@ -20,7 +20,7 @@
   }
 
   figure[data-rehype-pretty-code-figure] {
-    @apply !my-0;
+    @apply !my-0 shadow-sm dark:shadow-none rounded-md;
   }
 }
 

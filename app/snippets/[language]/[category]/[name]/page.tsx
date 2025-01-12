@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -5,7 +6,6 @@ import Link from "next/link";
 import { getSnippet } from "@/lib/snippets";
 
 import { Snippet } from "./snippet";
-import { Fragment } from "react";
 
 export interface SnippetParams {
   params: Promise<{ language: string; category: string; name: string }>;
@@ -79,7 +79,7 @@ export default async function SnippetPage({ params }: SnippetParams) {
             {snippet.metadata.keywords.map((keyword) => (
               <div
                 key={keyword}
-                className="text-sm text-muted-foreground bg-card border border-border rounded-md py-0.5 px-2"
+                className="text-sm text-muted-foreground bg-card border border-border rounded-md py-0.5 px-2 shadow-sm dark:shadow-none"
               >
                 {keyword}
               </div>
