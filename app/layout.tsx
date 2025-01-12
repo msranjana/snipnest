@@ -25,6 +25,7 @@ import "./globals.css";
 import "./highlight.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://snipnest.dev"),
   title: "SnipNest - Open-source code snippet collection",
   description:
     "Need code that works? Grab a snippet. Made something cool? Share it back. Simple as that.",
