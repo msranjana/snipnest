@@ -5,7 +5,13 @@ import { existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import type { SnippetMetadata } from "./types";
-import { formatPath, getSnippetList, parseMetadata } from "./utils";
+import {
+  formatPath,
+  getSnippetList,
+  parseMetadata,
+  throwIfLanguageInvalid,
+} from "./utils";
+import { LANGUAGES } from "./languages";
 
 export interface Snippet {
   language: string;
@@ -19,50 +25,62 @@ export type GroupedSnippets = Record<string, Record<string, Snippet[]>>;
 const basePath = join(process.cwd(), "snippets");
 
 export const getSnippet: (
-  language: string,
-  category: string,
-  name: string
-) => Promise<Snippet | null> = cache(async (language, category, name) => {
-  try {
-    const path = join(basePath, `${formatPath(language, category, name)}.mdx`);
+  language: Snippet["language"],
+  category: Snippet["category"],
+  name: Snippet["name"]
+) => Promise<Snippet | null> = cache(async (lng, category, name) => {
+  const language = lng.toLowerCase();
 
-    const exists = existsSync(path);
+  throwIfLanguageInvalid(language);
 
-    if (!exists) {
-      return null;
-    }
-
-    const content = await readFile(path, { encoding: "utf-8" });
-
-    if (!content) {
-      return null;
-    }
-
-    return {
-      language,
-      category,
-      name,
-      metadata: parseMetadata(content),
-    };
-  } catch (e) {
-    return null;
-  }
-});
-
-export const getSnippetContent: (
-  language: string,
-  category: string,
-  name: string
-) => Promise<string | null> = cache(async (language, category, name) => {
   const path = join(basePath, `${formatPath(language, category, name)}.mdx`);
 
   const exists = existsSync(path);
 
   if (!exists) {
-    return null;
+    throw new Error("Snippet not found.", { cause: { status: 404 } });
   }
 
   const content = await readFile(path, { encoding: "utf-8" });
+
+  if (!content) {
+    throw new Error("Couldn't read the snippet's content.", {
+      cause: { status: 500 },
+    });
+  }
+
+  return {
+    language,
+    category,
+    name,
+    metadata: parseMetadata(content),
+  };
+});
+
+export const getSnippetContent: (
+  language: Snippet["language"],
+  category: Snippet["category"],
+  name: Snippet["name"]
+) => Promise<string | null> = cache(async (lng, category, name) => {
+  const language = lng.toLowerCase();
+
+  throwIfLanguageInvalid(language);
+
+  const path = join(basePath, `${formatPath(language, category, name)}.mdx`);
+
+  const exists = existsSync(path);
+
+  if (!exists) {
+    throw new Error("Snippet not found.", { cause: { status: 404 } });
+  }
+
+  const content = await readFile(path, { encoding: "utf-8" });
+
+  if (!content) {
+    throw new Error("Couldn't read the snippet's content.", {
+      cause: { status: 500 },
+    });
+  }
 
   return (
     content
@@ -115,12 +133,18 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
           acc[language][category] = [];
         }
 
-        acc[language][category].push({
-          language,
-          category,
-          name,
-          metadata,
-        });
+        if (LANGUAGES.flatMap((x) => x.name.toLowerCase()).includes(language)) {
+          acc[language][category].push({
+            language,
+            category,
+            name,
+            metadata,
+          });
+        } else {
+          throw new Error(
+            `"${language}" is missing from the list of languages in lib/languages.ts`
+          );
+        }
 
         return acc;
       }, {} as GroupedSnippets);
