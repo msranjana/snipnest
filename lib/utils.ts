@@ -70,6 +70,21 @@ export function formatLanguage(language: string) {
   return LANGUAGES.find((x) => x.value === language)?.name || language;
 }
 
+function languageExists(language: string) {
+  return LANGUAGES.find((x) => x.value === language) !== undefined;
+}
+
+export function throwIfLanguageInvalid(language: string) {
+  if (!languageExists(language)) {
+    throw new Error(
+      `"${language}" is not a valid language. Valid languages are: ${LANGUAGES.map((x) => x.value).join(", ")}.`,
+      {
+        cause: { status: 400 },
+      }
+    );
+  }
+}
+
 export const METADATA_REGEX =
   /export\s+const\s+metadata\s*=\s*{\s*(?:name:\s*(?:"|')(?<name>.*)(?:"|'),\s*description:\s*(?:"|')(?<description>.*)(?:"|'),\s*keywords:\s*\[(?<keywords>(?:\s*"[^"]+"\s*,?\s*)*)\],\s*contributors:\s*\[(?<contributors>(?:\s*"[^"]+"\s*,?\s*)*)\]\s*,?\s*)}/;
 
@@ -105,6 +120,39 @@ export function parseMetadata(code: string): SnippetMetadata {
   };
 }
 
-export function formatPath(language: string, category: string, name: string) {
+export function formatPath(
+  language: Snippet["language"],
+  category: string,
+  name: string
+) {
   return `${language.toLowerCase()}/${toKebabCase(category)}/${toKebabCase(name)}`;
+}
+
+export function handleApiError(error: unknown) {
+  if (error instanceof Error) {
+    const status = (error.cause as { status: number }).status;
+
+    return new Response(
+      JSON.stringify({
+        status,
+        message: error.message || "Not found.",
+      }),
+      {
+        status,
+      }
+    );
+  }
+
+  // An unknown error occurred
+  console.error(error);
+
+  return new Response(
+    JSON.stringify({
+      status: 500,
+      message: "Something went wrong.",
+    }),
+    {
+      status: 500,
+    }
+  );
 }
