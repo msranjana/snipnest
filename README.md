@@ -1,84 +1,75 @@
-# SnipNest
+# SnipNest 🪺
 
 ### Code Smarter, Not Harder.
 
-Stuck on something? Find ready-to-use snippets that actually work. Got a cool solution? Share it and help someone out. It's like trading ideas, but for code.
+Need code that works? Grab a snippet. Made something cool? Share it back. Simple as that.
 
-## What is SnipNest?
+[![License](https://badgen.net/github/license/itsbrunodev/snipnest?color=green&label=License)](LICENSE)
+[![Stars](https://badgen.net/github/stars/itsbrunodev/snipnest?color=orange&label=Stars)](https://github.com/itsbrunodev/snipnest/stargazers)
+[![Issues](https://badgen.net/github/open-issues/itsbrunodev/snipnest?label=Open+Issues)](https://github.com/itsbrunodev/snipnest/issues)
 
-SnipNest is a community-driven hub for code snippets. Whether you're looking for a quick fix, a clever way to optimize your code, or just some inspiration, you'll find it here.
+## 🚀 What's Inside
 
-And if you've got a snippet that's worth sharing, we'd love to see it! Contribute your solutions and help grow the collection.
+- **Working Snippets**: Code that's tested and ready to use
+- **Many Languages**: Pick your favorite - JavaScript, Python, and more
+- **Built Together**: Made by developers, for developers
 
-## Why SnipNest?
+## 🎯 Get Started
 
-- **Save Time**: No more hunting through forums or guessing what works. These snippets are tested and ready to go.
-- **Learn and Share**: Discover new approaches and help others by sharing your expertise.
-- **Stay Organized**: Snippets are categorized by language and purpose, so it's easy to find what you need.
+Head over to [snipnest.dev](https://snipnest.dev) and start exploring.
 
-## Getting Started
-
-### Finding Snippets
-
-Visit the [SnipNest website](https://snipnest.dev) to explore categorized snippets for your favorite languages.
-
-Each snippet includes:
-
-- The code itself
-- An example to show how it works
-
-### Contributing
-
-Got something awesome to add? Check out our [Contributing Guidelines](./CONTRIBUTING.md) for all the details on how to:
-
-- Add features and fix bugs
-- Add new snippets
-- Edit existing ones
-- Create new languages or categories
-
-## Using the API
-
-You can find the API documentation [here](./API.md).
-
-## Running Locally
-
-### Prerequisites
-
-To run this project locally, first clone the repository
-
-```
+```sh
+# Clone the repository
 git clone https://github.com/itsbrunodev/snipnest.git
-```
 
-### About environment variables
-
-The only thing that requires environment variables is rate limiting.
-
-_Rate limiting is disabled when running on localhost and when development mode is active._
-
-When you're running in production mode and using a public IP, the rate limiting is enabled. This requires you to add the environment variables you can find in `.env.example` to `.env.local`. (this project uses Upstash Redis, you can [read more here](https://upstash.com/docs/redis/overall/getstarted) on how to get the necessary credentials)
-
-### Running
-
-Install the dependencies (this project uses pnpm as the package manager, but you can use any other package manager you prefer)
-
-```
+# Install dependencies
 pnpm install
-```
 
-Then, run the project in the development environment
-
-```
+# Start development server
 pnpm dev
 ```
 
-If you want to run the project in the production environment
+## 💻 Local Setup
 
-```
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm/yarn
+
+### Environment Variables
+
+For rate limiting in production, you'll need Upstash Redis:
+
+1. Copy `.env.example` to `.env.local`
+2. Add your Upstash details ([Get them here](https://upstash.com/docs/redis/overall/getstarted))
+
+> Note: Don't worry about rate limiting on localhost or in development mode - it's off by default.
+
+### Going Live
+
+```bash
 pnpm build
 pnpm start
 ```
 
-## Let's Build This Together
+## 🤝 Want to Help?
 
-SnipNest is all about the community. Every snippet you share could be exactly what someone else needs.
+Check out our [Contributing Guidelines](./CONTRIBUTING.md). You can:
+
+- Add snippets
+- Fix bugs
+- Add new features
+
+## 📚 API Docs
+
+Want to build something with our API? [Check the docs](./API.md)
+
+## 🌟 Need Help?
+
+- [Found a bug?](https://github.com/itsbrunodev/snipnest/issues)
+- [Have an idea?](https://github.com/itsbrunodev/snipnest/issues)
+- [Discussions](https://github.com/itsbrunodev/snipnest/discussions)
+
+## 📜 License
+
+SnipNest is under the [MIT license](./LICENSE).
