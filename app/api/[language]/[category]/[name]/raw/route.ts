@@ -1,4 +1,5 @@
 import { getSnippetContent } from "@/lib/snippets";
+import { handleApiError } from "@/lib/utils";
 
 import type { SnippetParams } from "@/app/snippets/[language]/[category]/[name]/page";
 
@@ -11,15 +12,7 @@ export async function GET(_: unknown, { params }: SnippetParams) {
     return new Response(snippet, {
       status: 200,
     });
-  } catch (e) {
-    return new Response(
-      JSON.stringify({
-        status: 404,
-        message: "Snippet not found.",
-      }),
-      {
-        status: 404,
-      }
-    );
+  } catch (error) {
+    return handleApiError(error);
   }
 }

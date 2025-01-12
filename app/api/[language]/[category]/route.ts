@@ -1,4 +1,5 @@
 import { getGroupedSnippets } from "@/lib/snippets";
+import { handleApiError } from "@/lib/utils";
 
 import type { SnippetParams } from "@/app/snippets/[language]/[category]/[name]/page";
 
@@ -13,15 +14,7 @@ export async function GET(_: unknown, { params }: SnippetParams) {
     return new Response(JSON.stringify(snippetsOfCategory), {
       status: 200,
     });
-  } catch (e) {
-    return new Response(
-      JSON.stringify({
-        status: 404,
-        message: "Category not found.",
-      }),
-      {
-        status: 404,
-      }
-    );
+  } catch (error) {
+    return handleApiError(error);
   }
 }

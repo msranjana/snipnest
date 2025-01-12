@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 
 import { getGroupedSnippets } from "@/lib/snippets";
-import { getSnippetList } from "@/lib/utils";
+import { getSnippetList, handleApiError } from "@/lib/utils";
 import { search } from "@/lib/search";
 
 export async function GET(request: NextRequest) {
@@ -10,15 +10,11 @@ export async function GET(request: NextRequest) {
     const query = searchParams.get("query");
 
     if (!query) {
-      return new Response(
-        JSON.stringify({
+      throw new Error("Search query is required. (?query=...)", {
+        cause: {
           status: 400,
-          message: "Search query is required. (?query=...)",
-        }),
-        {
-          status: 400,
-        }
-      );
+        },
+      });
     }
 
     const groupedSnippets = await getGroupedSnippets();
@@ -29,15 +25,7 @@ export async function GET(request: NextRequest) {
     return new Response(JSON.stringify(results), {
       status: 200,
     });
-  } catch (e) {
-    return new Response(
-      JSON.stringify({
-        status: 404,
-        message: "Language not found.",
-      }),
-      {
-        status: 404,
-      }
-    );
+  } catch (error) {
+    return handleApiError(error);
   }
 }

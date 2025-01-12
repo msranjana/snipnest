@@ -1,4 +1,5 @@
 import { getGroupedSnippets } from "@/lib/snippets";
+import { handleApiError } from "@/lib/utils";
 
 export async function GET() {
   try {
@@ -9,15 +10,7 @@ export async function GET() {
     return new Response(JSON.stringify(languages), {
       status: 200,
     });
-  } catch (e) {
-    return new Response(
-      JSON.stringify({
-        status: 500,
-        message: "Something went wrong while fetching languages.",
-      }),
-      {
-        status: 500,
-      }
-    );
+  } catch (error) {
+    return handleApiError(error);
   }
 }
