@@ -31,6 +31,17 @@ const nextConfig = {
   env: {
     VERSION: packageJson.version,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        port: "",
+        pathname: "/itsbrunodev/snipnest/refs/heads/main/assets/**",
+        search: "",
+      },
+    ],
+  },
 };
 
 export default withMDX(nextConfig);
