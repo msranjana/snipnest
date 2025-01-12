@@ -1,5 +1,3 @@
-"use client";
-
 import { SearchSnippetButton } from "@/components/search/button";
 
 export default function SnippetLanguagePage() {
