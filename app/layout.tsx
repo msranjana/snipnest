@@ -27,7 +27,10 @@ import "./highlight.css";
 export const metadata: Metadata = {
   title: "SnipNest - Open-source code snippet collection",
   description:
-    "Stuck on something? Find ready-to-use snippets that actually work. Got a cool solution? Share it and help someone out. It's like trading ideas, but for code.",
+    "Need code that works? Grab a snippet. Made something cool? Share it back. Simple as that.",
+  alternates: {
+    canonical: "https://snipnest.dev",
+  },
   icons: {
     icon: [
       {
@@ -74,11 +77,7 @@ export default async function RootLayout({
   const snippetList = getSnippetList(groupedSnippets);
 
   return (
-    <html
-      lang="en"
-      className="scroll-smooth"
-      suppressHydrationWarning
-    >
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn(
           "antialiased bg-zinc-300 dark:bg-black",
