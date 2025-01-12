@@ -94,6 +94,22 @@ export const getSnippetContent: (
   );
 });
 
+export const getLanguageCategories: (
+  language: Snippet["language"]
+) => Promise<string[]> = cache(async (lng) => {
+  const language = lng.toLowerCase();
+
+  const categories = (
+    await readdir(join(basePath, language), {
+      withFileTypes: true,
+    })
+  )
+    .filter((f) => f.isDirectory())
+    .map((f) => f.name);
+
+  return categories;
+});
+
 export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
   async () => {
     try {
