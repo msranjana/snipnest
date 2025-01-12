@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 import { getSnippetContent } from "@/lib/snippets";
 import { handleApiError } from "@/lib/utils";
 
@@ -13,7 +11,7 @@ export async function GET(_: unknown, { params }: SnippetParams) {
 
     const snippet = await getSnippetContent(language, category, name);
 
-    return NextResponse.json(snippet, {
+    return new Response(snippet, {
       status: 200,
     });
   } catch (error) {
