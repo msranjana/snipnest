@@ -4,6 +4,8 @@ import { getGroupedSnippets } from "@/lib/snippets";
 import { getSnippetList, handleApiError } from "@/lib/utils";
 import { search } from "@/lib/search";
 
+export const dynamic = "force-static";
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;

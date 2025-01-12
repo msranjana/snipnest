@@ -5,6 +5,8 @@ import { handleApiError } from "@/lib/utils";
 
 import type { SnippetParams } from "@/app/snippets/[language]/[category]/[name]/page";
 
+export const dynamic = "force-static";
+
 export async function GET(_: unknown, { params }: SnippetParams) {
   try {
     const { language } = await params;
