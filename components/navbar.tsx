@@ -89,6 +89,12 @@ export function Navbar() {
               Snippets
             </Link>
             <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/extensions"
+            >
+              Extensions
+            </Link>
+            <Link
               className="fill-muted-foreground hover:fill-foreground"
               href="https://github.com/itsbrunodev/snipnest"
               target="_blank"
@@ -132,6 +138,12 @@ export function Navbar() {
                       href="/snippets"
                     >
                       Snippets
+                    </Link>
+                    <Link
+                      className="text-muted-foreground hover:text-foreground"
+                      href="/extensions"
+                    >
+                      Extensions
                     </Link>
                     <Link
                       className="text-muted-foreground hover:text-foreground"
