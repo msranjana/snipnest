@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { getSnippet } from "@/lib/snippets";
+import { formatPath } from "@/lib/utils";
 
 import { Snippet } from "./snippet";
 
@@ -23,14 +24,28 @@ export async function generateMetadata({
   }
 
   const title = `${snippet.metadata.name} - SnipNest`;
+  const url = `https://snipnest.dev/snippets/${formatPath(
+    language,
+    category,
+    name
+  )}`;
 
   return {
     title,
     description: snippet.metadata.description,
     keywords: snippet.metadata.keywords,
+    authors: snippet.metadata.contributors.map((contributor) => ({
+      name: contributor,
+      url: `https://github.com/${contributor}`,
+    })),
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title,
       description: snippet.metadata.description,
+      url,
+      type: "article",
     },
   };
 }
