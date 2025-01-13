@@ -33,7 +33,7 @@ pnpm dev
 
 Integration with your favorite tools to make SnipNest available when you need it most.
 
-- [SnipNest for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=itsbrunodev.snipnest)
+- [SnipNest for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=itsbrunodev.snipnest) ([repository](https://github.com/itsbrunodev/snipnest-vscode))
 - Is your favorite extension missing? [Open an issue](https://github.com/itsbrunodev/snipnest/issues/new?assignees=&labels=enhancement%2Cfeature&projects=&template=features.yml&title=%5Bfeature%5D+-+)
 
 ## 💻 Local Setup
