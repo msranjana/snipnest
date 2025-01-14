@@ -90,9 +90,9 @@ export const getSnippetContent: (
     )
     .replace(/<[\w]+>|<\/[\w]+>/g, "")
     .replace(/^[\r\n]+|[\r\n]+$/g, "")
-    .replace(/(?:\r\n|\n){3,}/g, "\n\n")
-    .trim()
-    .replace(/^\s{0,5}/gm, "");
+    .replace(/(?:\r\n|\n){3,}/g, "\n\n");
+  // .trim()
+  // .replace(/^\s{0,5}/gm, "");
 
   return regexContent;
 });
