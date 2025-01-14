@@ -82,16 +82,19 @@ export const getSnippetContent: (
     });
   }
 
-  return (
-    content
-      // todo: although this works fine for now, we need to improve this
-      .replace(
-        /export\s+const\s+metadata\s*=\s*\{[^}]*\};|(?:\r?\n){3,}|```\w*/g,
-        ""
-      )
-      .replace(/^[\r\n]+|[\r\n]+$/g, "")
-      .replace(/(?:\r\n|\n){3,}/g, "\n\n")
-  );
+  const regexContent = content
+    // todo: although this works fine for now, we need to improve this
+    .replace(
+      /export\s+const\s+metadata\s*=\s*\{[^}]*\};|(?:\r?\n){3,}|```\w*/g,
+      ""
+    )
+    .replace(/<[\w]+>|<\/[\w]+>/g, "")
+    .replace(/^[\r\n]+|[\r\n]+$/g, "")
+    .replace(/(?:\r\n|\n){3,}/g, "\n\n")
+    .trim()
+    .replace(/^\s{0,5}/gm, "");
+
+  return regexContent;
 });
 
 export const getLanguageCategories: (
