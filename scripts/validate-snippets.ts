@@ -86,9 +86,9 @@ function validateMdxFile(filePath: string) {
 
   const codeBlocks = [...fileContent.matchAll(CODE_BLOCK_REGEX)];
 
-  if (codeBlocks.length < 2) {
-    throw new Error(
-      "There should be at least two code blocks and each one should have a language specified."
+  if (codeBlocks.length === 1) {
+    console.warn(
+      `Snippet ${basename(filePath)} has only one code block. It's fine to have only one if it's self-explanatory and is a "one-liner".`
     );
   }
 
