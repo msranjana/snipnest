@@ -1,0 +1,13 @@
+export const metadata = {
+  name: "Find Duplicates in Array",
+  description: "Finds duplicate elements in an array.",
+  keywords: ["array", "find", "duplicate"],
+  contributors: ["itsbrunodev"],
+}
+
+```python
+from collections import Counter
+
+data = [1, 2, 3, 4, 1, 2, 5]
+duplicates = [item for item, count in Counter(data).items() if count > 1] # [1, 2]
+```
