@@ -51,7 +51,7 @@ export const metadata = {
 
 #### ⚙️ 2. Code Blocks
 
-Your snippet must have **two code blocks**:
+Your snippet must have **two code blocks** (you **can** use only one, that being the actual snippet, if it's self-explanatory and is for example a "one-liner"):
 
 1. **Snippet**: This is the actual code. Make sure to annotate it with the language for syntax highlighting, please use the ID or alias of the language found in the [supported languages](https://shiki.style/languages) list.
 
