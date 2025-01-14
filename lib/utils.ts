@@ -132,7 +132,7 @@ export function formatPath(
 
 export function handleApiError(error: unknown) {
   if (error instanceof Error) {
-    const status = (error.cause as { status: number }).status;
+    const status = (error.cause as { status: number })?.status || 500;
 
     return NextResponse.json(
       {
