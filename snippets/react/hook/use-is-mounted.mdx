@@ -1,0 +1,24 @@
+export const metadata = {
+  name: "useIsMounted",
+  description: "Checks if a component is mounted.",
+  keywords: ["is-mounted", "component"],
+  contributors: ["itsbrunodev"],
+};
+
+```typescript
+function useIsMounted(): () => boolean {
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  return () => isMounted.current;
+}
+```
+
+```typescript
+const isMounted = useIsMounted(); // true
+```

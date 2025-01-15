@@ -1,0 +1,48 @@
+export const metadata = {
+  name: "useIntersectionObserver",
+  description: "Observes the intersection of an element with the viewport.",
+  keywords: ["intersection", "observer", "viewport"],
+  contributors: ["itsbrunodev"],
+};
+
+```typescript
+function useIntersectionObserver(
+  ref: React.RefObject<Element>,
+  options?: IntersectionObserverInit
+): boolean {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    }, options);
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [ref, options]);
+
+  return isVisible;
+}
+```
+
+```tsx
+const ref = useRef<HTMLDivElement>(null);
+const isVisible = useIntersectionObserver(ref);
+
+// log the visibility
+useEffect(() => {
+  console.log("Visible", isVisible);
+}, [isVisible]);
+
+return (
+  <div>
+    <div style={{ height: "150vh" }} />
+    <div ref={ref}>{isVisible ? "Visible" : "Not Visible"}</div>
+  </div>
+);
+```
