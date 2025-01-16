@@ -4,7 +4,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 import type { GroupedSnippets, Snippet } from "./snippets";
-import { LANGUAGES } from "./languages";
+import { LANGUAGE_EXTENSIONS, LANGUAGES } from "./languages";
 import type { RegexGroups, SnippetMetadata } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
@@ -70,6 +70,10 @@ export function getSnippetList(groupedSnippets: GroupedSnippets): Snippet[] {
  */
 export function formatLanguage(language: string) {
   return LANGUAGES.find((x) => x.value === language)?.name || language;
+}
+
+export function getFileExtension(language: string) {
+  return LANGUAGE_EXTENSIONS.get(toKebabCase(language));
 }
 
 function languageExists(language: string) {
