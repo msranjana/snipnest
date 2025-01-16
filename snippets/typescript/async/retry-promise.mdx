@@ -9,8 +9,8 @@ export const metadata = {
 ```typescript
 async function retryPromise<T>(
   fn: () => Promise<T>,
-  maxAttempts: number = 3, // Retry 3 times by default
-  delay: number = 1000 // Retry after 1 second by default
+  maxAttempts = 3, // Retry 3 times by default
+  delay = 1000 // Retry after 1 second by default
 ): Promise<T> {
   let attempts = 0;
 
