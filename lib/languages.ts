@@ -59,3 +59,12 @@ export const LANGUAGES: Language[] = [
     isColored: false,
   },
 ];
+
+export const LANGUAGE_EXTENSIONS: Map<string, string> = new Map([
+  ["javascript", "js"],
+  ["typescript", "ts"],
+  ["react", "jsx"], // react is not a language, but tsx is
+  ["python", "py"],
+  ["rust", "rs"],
+  ["regex", "txt"], // regex is not a language, but txt is
+]);
