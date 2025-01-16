@@ -10,7 +10,7 @@ Hey there! Thanks for stopping by and considering contributing to this project. 
 
 The only thing we ask is that you follow the rules below to keep everything tidy and easy to work with.
 
-## 📝 Snippet Guidelines
+## 🖋️ Snippet Guidelines
 
 ### 📂 Folder Structure
 
@@ -32,7 +32,7 @@ Here's how it breaks down:
 
 Every snippet must be a `.mdx` file.
 
-### 📄 What Goes Inside
+### 🔄 What Goes Inside
 
 Each snippet file needs two things: **metadata** and **code blocks**.
 
@@ -87,36 +87,62 @@ If you're unsure whether you should submit such a snippet, submit it anyway and 
 
 ## 🛠️ How to Contribute
 
-### 🆕 Adding a Snippet
+### ✔️ Submitting Snippets
+
+You can submit snippets in two ways: **via CLI** or **manually**.
+
+#### 🔧 CLI (Beta)
+
+The CLI makes it easy to generate a new snippet file with all the required structure and metadata. 
+
+> [!NOTE]
+> The CLI is still in beta. It is completely safe to use but is subject to change in upcoming releases.
+
+1. Clone the repository to your local machine.
+2. Install dependencies with `pnpm install`.
+3. Run the CLI new snippet command with:
+   ```bash
+   pnpm snipnest --new
+   ```
+4. Follow the prompts:
+   - Enter the **language** name.
+   - Enter the **category** name.
+   - Provide the **snippet's name**.
+   - Write a **short description** of what the snippet does.
+   - Add **keywords**.
+   - Specify the **contributors** (GitHub usernames).
+   - Input the **snippet's code**.
+   - (Optional, refer to [Snippet Guidelines](#%EF%B8%8F-2-code-blocks)) Input an **example** of the snippet in action.
+5. Once done, the CLI will generate the `.mdx` file in the correct folder structure.
+6. Review the generated file and make any additional tweaks if necessary.
+7. Submit your work via a pull request (refer to [Submitting Your Work](#submitting-your-work)).
+
+#### ✍️ Manually
+
+If you prefer to create snippets manually, follow these steps:
 
 1. Find the right folder for the language and category. If it doesn't exist, create it (refer to [Adding Languages or Categories](#adding-languages-or-categories)).
 2. Add a new `.mdx` file for your snippet.
 3. Follow the format we outlined above.
 4. Submit your work via a pull request (refer to [Submitting Your Work](#submitting-your-work)).
 
-### ✏️ Editing a Snippet
+### ➕ Adding Languages or Categories
 
-1. Open the file you want to tweak.
-2. Make your changes while keeping the format intact.
-3. Submit a pull request (refer to [Submitting Your Work](#submitting-your-work)).
-
-## ➕ Adding Languages or Categories
-
-### 🌐 New Language
+#### 🌐 New Language
 
 1. Create a new folder in `snippets/` with the language name in lowercase.
    - For example: `javascript`, `python`, `cpp`.
 2. Add categories and snippets as needed.
 3. Update the list of languages in `lib/languages.ts`. (strictly only use icons from the `devicons-react` package just like other icons or `lucide-react`)
 
-### 📂 New Category
+#### 📂 New Category
 
 1. Go to the language folder.
 2. Create a new folder for the category in kebab-case.
    - For example: `data-structures`, `file-handling`.
 3. Add your snippets inside.
 
-## Submitting Your Work
+### Submitting Your Work
 
 1. Fork the repo and create a new branch for your changes.
 2. Make sure your snippet follows all the rules.
