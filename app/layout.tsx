@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/react";
 import { Inter, Fira_Code } from "next/font/google";
 
 const sansFont = Inter({
@@ -104,7 +103,6 @@ export default async function RootLayout({
             </div>
           </ThemeProvider>
         </SearchProvider>
-        <Analytics />
       </body>
     </html>
   );
