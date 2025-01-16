@@ -30,7 +30,7 @@ export async function CodePreview({ code }: { code: string }) {
 
   return (
     <pre
-      className="z-10 relative h-full bg-card rounded-tl-md text-left pt-4 border-l border-t border-border !overflow-hidden [&>figure>pre>code>span]:!pr-0 [&>figure>pre]:!overflow-hidden select-none"
+      className="z-10 relative h-full bg-card rounded-tl-md text-left pt-4 border-l border-t border-border !overflow-hidden [&>figure>pre>code>span]:!pr-0 [&>figure>pre]:!overflow-hidden [&>figure]:shadow-none select-none"
       /* biome-ignore lint: another option could be to use the rehype-react package, though it would be need to be implemented in a client component which introduces a slight flash on page load */
       dangerouslySetInnerHTML={{
         __html: highlightedCode,
