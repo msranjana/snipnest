@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Fira_Code } from "next/font/google";
+import Script from "next/script";
 
 const sansFont = Inter({
   subsets: ["latin"],
@@ -103,6 +104,12 @@ export default async function RootLayout({
             </div>
           </ThemeProvider>
         </SearchProvider>
+        <Script
+          async
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="954080ca-8287-48de-848b-b2d1aebdb957"
+        />
       </body>
     </html>
   );
