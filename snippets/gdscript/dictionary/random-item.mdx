@@ -1,0 +1,18 @@
+export const metadata = {
+  name: "Random Item",
+  description: "Gets a random item from a dictionary",
+  keywords: ["dictionary", "random-item"],
+  contributors: ["@sebkolind"],
+};
+
+```gdscript
+func random_item(dict):
+    var keys = dict.keys()
+    var random_key = keys[randi() % keys.size()]
+    return dict[random_key]
+```
+
+```gdscript
+var my_dict = {"a": 1, "b": 2, "c": 3}
+print(random_item(my_dict)) # Output: 1 or 2 or 3
+```
