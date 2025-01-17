@@ -19,7 +19,7 @@ export function Badge({
   return (
     <Link
       className={cn(
-        "inline-flex w-fit gap-2 items-center rounded-full px-4 py-1.5 text-sm font-medium hover:bg-muted/50 transition-colors border border-border group",
+        "inline-flex w-fit gap-2 items-center rounded-full px-4 py-1.5 text-sm font-medium hover:bg-muted/50 transition-colors border border-border dark:border-muted group",
         className
       )}
       href={href}
