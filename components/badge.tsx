@@ -28,7 +28,7 @@ export function Badge({
       {prefix &&
         createElement(prefix, {
           className:
-            "size-4 text-foreground/80 group-hover:text-foreground group-hover:-rotate-12 transition-transform",
+            "size-4 text-foreground/80 group-hover:text-foreground transition-colors",
           strokeWidth: 2,
         })}
       {children}
