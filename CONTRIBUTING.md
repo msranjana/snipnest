@@ -68,7 +68,7 @@ export const metadata = {
   description: "What the snippet does in a sentence or two", // Be concise and accurate.
   keywords: ["keyword1", "keyword2", "keyword3"], // Add relevant keywords in kebab-case.
   contributors: ["username"], // GitHub usernames only. Do not include @ symbols.
-};
+}; // Don't omit the semicolon.
 ```
 
 #### ⚙️ 2. Code Blocks
