@@ -20,7 +20,7 @@ export async function Hero() {
   )!;
 
   return (
-    <div className="h-screen w-full flex xl:flex-row flex-col xl:justify-between justify-center items-center xl:gap-0 gap-12">
+    <div className="h-[77vh] w-full flex xl:flex-row flex-col xl:justify-between justify-center items-center xl:gap-0 gap-12">
       <div className="flex flex-col gap-6 text-left xl:w-[512px] w-full">
         <Badge
           href={EXTENSIONS.vscode.link}
