@@ -1,4 +1,4 @@
-import { ArrowRightIcon, PackagePlusIcon } from "lucide-react";
+import { ArrowRightIcon, PackageIcon } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,7 @@ export async function Hero() {
         <Badge
           href={EXTENSIONS.vscode.link}
           target="_blank"
-          prefix={PackagePlusIcon}
+          prefix={PackageIcon}
         >
           New! Visual Studio Code extension
         </Badge>
@@ -65,6 +65,7 @@ export async function Hero() {
         <div className="flex flex-col gap-3 md:w-[640px] w-full">
           <div className="aspect-[5/3] w-[inherit] rounded-lg bg-accent border border-border overflow-hidden md:pt-12 pt-4 md:pl-12 pl-4 relative shadow-sm dark:shadow-none">
             <CodePreview
+              className="z-10 relative h-full bg-card rounded-tl-md text-left pt-4 border-l border-t border-border"
               code={`\`\`\`${
                 randomSnippetLanguage?.alias || randomSnippetLanguage.value
               }\n${randomSnippet.content}\n\`\`\``}
