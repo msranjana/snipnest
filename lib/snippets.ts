@@ -10,6 +10,7 @@ import {
   getSnippetList,
   parseMetadata,
   throwIfLanguageInvalid,
+  toKebabCase,
 } from "./utils";
 import { LANGUAGES } from "./languages";
 
@@ -88,7 +89,7 @@ export const getSnippetContent: (
       /export\s+const\s+metadata\s*=\s*\{[^}]*\};|(?:\r?\n){3,}|```\w*/g,
       ""
     )
-    .replace(/<[\w]+>|<\/[\w]+>/g, "")
+    // .replace(/<[\w]+>|<\/[\w]+>/g, "")
     .replace(/^[\r\n]+|[\r\n]+$/g, "")
     .replace(/(?:\r\n|\n){3,}/g, "\n\n");
   // .trim()
@@ -178,7 +179,10 @@ export const getGroupedSnippets: () => Promise<GroupedSnippets> = cache(
 
 export async function getRandomSnippet() {
   const groupedSnippets = await getGroupedSnippets();
-  const snippetList = getSnippetList(groupedSnippets);
+
+  const snippetList = getSnippetList(groupedSnippets).filter(
+    (snippet) => toKebabCase(snippet.language) !== "regex"
+  );
 
   const snippetData =
     snippetList[Math.floor(Math.random() * snippetList.length)];
