@@ -95,7 +95,7 @@ function OpenSourceBanner() {
 function FindSnippetsFastBanner() {
   return (
     <div className="size-full flex flex-col gap-1 text-muted-foreground">
-      <div className="absolute -rotate-3 top-6 left-8 bg-muted px-4 py-3 rounded-md text-sm w-48 flex items-center gap-1 z-10 border border-border dark:border-input">
+      <div className="absolute -rotate-3 top-6 left-8 bg-muted px-4 py-3 rounded-md text-sm w-48 flex items-center gap-1 z-10 border border-border dark:border-input shadow-sm dark:shadow-none">
         <div className="flex gap-2 items-center">
           <SearchIcon className="size-4" />
           chunk arr
