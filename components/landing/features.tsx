@@ -204,7 +204,10 @@ function CommunityDrivenBanner() {
 
 export function Features() {
   return (
-    <div className="mt-16 max-w-5xl w-full mx-auto flex flex-col gap-16">
+    <section
+      className="mt-16 max-w-5xl w-full mx-auto flex flex-col gap-16"
+      id="features"
+    >
       <div className="flex flex-col gap-2 items-center justify-center mx-auto max-w-md text-center">
         <h2 className="text-3xl font-semibold">Features</h2>
         <p className="text-muted-foreground">
@@ -237,6 +240,6 @@ export function Features() {
           description="Help improve the platform by contributing snippets and collaborating with other developers."
         />
       </div>
-    </div>
+    </section>
   );
 }
