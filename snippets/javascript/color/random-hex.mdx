@@ -1,16 +1,16 @@
 export const metadata = {
-    name: "Random Hex Color",
-    description: "Generates a random hex color.",
-    keywords: ["color", "hex", "random"],
-    contributors: ["ditinagrawal"],
+  name: "Random Hex Color",
+  description: "Generates a random hex color.",
+  keywords: ["color", "hex", "random"],
+  contributors: ["ditinagrawal"],
 };
 
 ```javascript
 function randomHexColor() {
-    return `#${Math.floor(Math.random() * 0xffffff)
-        .toString(16)
-        .padStart(6, "0")
-        .toUpperCase()}`;
+  return `#${Math.floor(Math.random() * 0xffffff)
+    .toString(16)
+    .padStart(6, "0")
+    .toUpperCase()}`;
 }
 ```
 
