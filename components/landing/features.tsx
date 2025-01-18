@@ -30,7 +30,7 @@ function FeatureCard({
         className
       )}
     >
-      <div className="size-full overflow-hidden flex items-end justify-center select-none relative group-hover:scale-[1.02] transition-transform duration-300">
+      <div className="size-full overflow-hidden flex items-end justify-center select-none relative">
         {banner}
       </div>
       <div className="absolute bottom-0 bg-gradient-to-t from-card via-card h-36 w-full" />
@@ -61,7 +61,7 @@ chunkArray(numbers, 3); // [[1, 2, 3], [4, 5, 6], [7]]
 
 function OpenSourceBanner() {
   return (
-    <div className="bg-muted rounded-md size-full flex flex-col gap-1 text-xs text-muted-foreground overflow-hidden w-[calc(100%-4rem)] h-[calc(100%-2rem)] border border-border dark:border-input">
+    <div className="bg-muted rounded-md size-full flex flex-col gap-1 text-xs text-muted-foreground overflow-hidden w-[calc(100%-4rem)] h-[calc(100%-2rem)] border border-border dark:border-input group-hover:scale-[1.02] transition-transform duration-300">
       <div className="bg-accent w-full p-2 flex items-center justify-between border-b border-border dark:border-input">
         <span>super-cool-snippet.mdx</span>
         <span className="px-2 py-0.5 bg-card text-card-foreground rounded inline-flex gap-1 items-center border border-border dark:border-none">
@@ -95,7 +95,7 @@ function OpenSourceBanner() {
 function FindSnippetsFastBanner() {
   return (
     <div className="size-full flex flex-col gap-1 text-muted-foreground">
-      <div className="absolute -rotate-3 top-6 left-8 bg-muted px-4 py-3 rounded-md text-sm w-48 flex items-center gap-1 z-10 border border-border dark:border-input shadow-sm dark:shadow-none">
+      <div className="absolute -rotate-3 top-6 left-8 bg-muted px-4 py-3 rounded-md text-sm w-48 flex items-center gap-1 z-10 border border-border dark:border-input shadow-sm dark:shadow-none group-hover:scale-[1.04] transition-transform duration-300">
         <div className="flex gap-2 items-center">
           <SearchIcon className="size-4" />
           chunk arr
@@ -103,7 +103,7 @@ function FindSnippetsFastBanner() {
         <div className="h-4 w-px bg-muted-foreground" />
       </div>
       <CodePreview
-        className="bg-muted py-2 rounded-md absolute top-16 left-3 rotate-3 border border-border dark:border-input text-xs [&>figure>pre>code>span]:!pl-2"
+        className="bg-muted py-2 rounded-md absolute top-16 left-3 rotate-3 border border-border dark:border-input text-xs [&>figure>pre>code>span]:!pl-2 group-hover:scale-[1.01] transition-transform duration-300 delay-75"
         code={code}
       />
     </div>
@@ -128,10 +128,10 @@ function CodeEditorIntegrationBanner() {
           <XIcon className="size-3" />
         </div>
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 w-44 flex flex-col gap-1 [&>div]:bg-accent [&>div]:shadow-sm [&>div]:dark:shadow-none [&>div]:border [&>div]:border-border [&>div]:dark:border-input [&>div]:rounded-sm [&>div]:py-1">
-          <div className="flex items-center gap-1.5 px-2">
+          <div className="flex items-center gap-1.5 px-2 group-hover:scale-[1.06] transition-transform duration-300">
             <SearchIcon className="size-3" /> chunk arr
           </div>
-          <div className="px-1">
+          <div className="px-1 group-hover:scale-[1.06] origin-top transition-transform duration-300 delay-75">
             <div className="p-1.5 rounded-sm bg-muted-foreground/10 gap-1 flex flex-col">
               <span className="h-2 w-12 bg-muted-foreground/20 rounded-full" />
               <span className="h-1 w-full bg-muted-foreground/20 rounded-full" />
@@ -178,17 +178,17 @@ function CommunityDrivenBanner() {
   return (
     <>
       <Message
-        className="md:top-8 top-4 md:left-6 left-6 -rotate-[4deg]"
+        className="md:top-8 top-4 md:left-6 left-6 -rotate-[4deg] group-hover:scale-[1.04] transition-transform duration-300"
         icon={<Identicon1 className="size-8" />}
         message="Looks good to me!"
       />
       <Message
-        className="md:top-12 top-16 right-6 md:rotate-6 rotate-3"
+        className="md:top-12 top-16 right-6 md:rotate-6 rotate-3 group-hover:scale-[1.04] transition-transform duration-300 delay-75"
         icon={<Identicon2 className="size-8" />}
-        message="Yup, looks good, we should add this."
+        message="Awesome work, we should add this."
       />
       <Message
-        className="top-32 md:left-20 left-4 -rotate-1"
+        className="top-36 md:left-20 left-4 -rotate-1 group-hover:scale-[1.04] transition-transform duration-300 delay-150"
         icon={
           <GitMergeIcon className="size-8 p-1.5 rounded-full bg-purple-200 dark:bg-purple-950 border border-purple-300 dark:border-purple-900" />
         }
