@@ -75,7 +75,7 @@ export const metadata = {
 
 Your snippet must have **two code blocks** (you **can** use only one, that being the actual snippet, if it's really short, an example is useful for example for pasting the snippet using the Visual Studio Code extension as it pastes the snippet and the example at the same time):
 
-1. **Snippet**: This is the actual code. Annotate it with the language for syntax highlighting (use the [supported languages](https://shiki.style/languages) list).
+1. **Snippet**: This is the actual code. Annotate it with the language for syntax highlighting (use the [supported languages](https://shiki.style/languages) list, react snippets that have HTML tags should use `tsx`).
 
    Example:
 
@@ -102,6 +102,7 @@ Your snippet must have **two code blocks** (you **can** use only one, that being
 - **Consistent Naming**: Use precise and relevant terms (e.g., `element` instead of `item` for dictionaries), do not include the name of the category in the snippet's file name (e.g., `chunk.mdx` instead of `chunk-array.mdx`).
 - **File Naming**: File names should match the snippet name (in kebab-case). For instance, a snippet named `Random Element` should have a file named `random-element.mdx`.
 - **Only Metadata and Code**: Don't add unrelated markdown content outside of the required metadata and code blocks.
+- **Trailing Newline**: Make sure the file **does not** end with a trailing newline.
 
 If you're unsure about for example what the name of the snippet's file should be, ask in the [Discussions](https://github.com/itsbrunodev/snipnest/discussions) or check out the other snippets.
 
