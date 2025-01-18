@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 export function GitHubIcon({ className }: { className?: string }) {
   return (
     <svg
-      className={cn("size-4", className)}
+      className={cn("size-4 fill-foreground", className)}
       role="img"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
