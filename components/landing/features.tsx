@@ -196,7 +196,10 @@ function CommunityDrivenBanner() {
         messageClassName="bg-purple-200 dark:bg-purple-950 border-purple-300 dark:border-purple-900 text-purple-950 dark:text-purple-200"
       />
       <div className="bg-muted rounded-md size-full flex flex-col gap-1 text-xs text-muted-foreground overflow-hidden md:w-[calc(100%-12rem)] w-[calc(100%-4rem)] md:h-[calc(100%-4rem)] h-[calc(100%-2rem)] border border-border dark:border-input py-2">
-        <CodePreview className="[&>figure>pre>code>span]:!pl-2" code={code} />
+        <CodePreview
+          className="[&>figure>pre>code>span]:!pl-2"
+          code={code}
+        />
       </div>
     </>
   );
