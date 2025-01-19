@@ -1,0 +1,16 @@
+export const metadata = {
+    name: "Check if Item Exists in localStorage",
+    description: "Checks if a specific item exists in localStorage.",
+    keywords: ["localstorage", "storage"],
+    contributors: ["ditinagrawal"],
+};
+
+```javascript
+const isItemInLocalStorage = (key) => {
+    return localStorage.getItem(key) !== null;
+};
+```
+
+```javascript
+console.log(isItemInLocalStorage("user")); // Output: true or false
+```
