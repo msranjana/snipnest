@@ -30,7 +30,6 @@ function useFetch<T>(url: string) {
 
   return { data, loading, error };
 }
-
 ```
 
 ```typescript
@@ -38,7 +37,5 @@ const { data, loading, error } = useFetch<User[]>('/api/chat');
 
 if (loading) return <p>Loading...</p>;
 if (error) return <p>Error: {error.message}</p>;
-
 return <ul>{data?.map(chat => <li key={chat.id}>{chat.message}</li>)}</ul>;
-
 ```
