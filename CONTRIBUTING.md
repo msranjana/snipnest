@@ -60,11 +60,11 @@ Each snippet file needs two things: **metadata** and **code blocks**.
 
 #### 📋 1. Metadata
 
-At the very top of the file, include this export with the same order of properties:
+At the very top of the file, include this export with the same order of properties, please check if another snippet has the same functionality but in another language, if so, please use the same name and description:
 
 ```javascript
 export const metadata = {
-  name: "Name of the snippet", // Use short and clear names. Avoid unnecessary words like "of a number".
+  name: "Name of the snippet", // Use short and clear names.
   description: "What the snippet does in a sentence or two", // Be concise and accurate.
   keywords: ["keyword1", "keyword2", "keyword3"], // Add relevant keywords in kebab-case.
   contributors: ["username"], // GitHub usernames only. Do not include @ symbols.
