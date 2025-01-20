@@ -32,7 +32,7 @@ function useFetch<T>(url: string) {
 }
 ```
 
-```typescript
+```tsx
 const { data, loading, error } = useFetch<User[]>('/api/chat');
 
 if (loading) return <p>Loading...</p>;
