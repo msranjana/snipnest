@@ -110,6 +110,8 @@ If you're unsure about for example what the name of the snippet's file should be
 
 If you're planning to submit a TypeScript snippet, check if it already exists for JavaScript. Only submit it if it has significant differences, like generics or type annotations.
 
+Please use a regular function, not an arrow function.
+
 If unsure, submit it anyway, and we'll help decide.
 
 ## 🛠️ How to Contribute
