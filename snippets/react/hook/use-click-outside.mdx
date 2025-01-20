@@ -5,9 +5,7 @@ export const metadata = {
   contributors: ["manjushsh"],
 };
 
-```typescript
-# import { useEffect, useRef } from "react";
-
+```tsx
 function useClickOutside(handler: () => void) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -24,8 +22,6 @@ function useClickOutside(handler: () => void) {
 
   return ref;
 }
-
-export default useClickOutside;
 
 ```
 

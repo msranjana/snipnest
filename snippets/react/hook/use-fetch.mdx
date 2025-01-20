@@ -5,9 +5,7 @@ export const metadata = {
   contributors: ["manjushsh"],
 };
 
-```typescript
-# import { useState, useEffect } from "react";
-
+```tsx
 function useFetch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
@@ -32,8 +30,6 @@ function useFetch<T>(url: string) {
 
   return { data, loading, error };
 }
-
-export default useFetch;
 
 ```
 
