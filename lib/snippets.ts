@@ -86,7 +86,7 @@ export const getSnippetContent: (
   const regexContent = content
     // todo: although this works fine for now, we need to improve this
     .replace(
-      /export\s+const\s+metadata\s*=\s*\{[^}]*\};|(?:\r?\n){3,}|```\w*/g,
+      /export\s+const\s+metadata\s*=\s*\{[^}]*\}(?:;?)|(?:\r?\n){3,}|```\w*/g,
       ""
     )
     // .replace(/<[\w]+>|<\/[\w]+>/g, "")
