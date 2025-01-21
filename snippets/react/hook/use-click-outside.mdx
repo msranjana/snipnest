@@ -6,7 +6,9 @@ export const metadata = {
 };
 
 ```tsx
-function useClickOutside(handler: () => void) {
+import { useRef, useEffect, RefObject } from 'react';
+
+function useClickOutside(handler: () => void): RefObject<HTMLDivElement> {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
