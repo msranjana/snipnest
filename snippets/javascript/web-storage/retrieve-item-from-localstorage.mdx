@@ -1,0 +1,17 @@
+export const metadata = {
+  name: "Retrieve Item from localStorage",
+  description: "Retrieves a value from localStorage by its key and parses it as JSON.",
+  keywords: ["localstorage", "storage"],
+  contributors: ["ditinagrawal"],
+};
+
+```javascript
+function getFromLocalStorage(key) {
+  const item = localStorage.getItem(key);
+  return item ? JSON.parse(item) : null;
+}
+```
+
+```javascript
+getFromLocalStorage("user"); // { name: "John", age: 30 }
+```
