@@ -168,4 +168,6 @@ The CLI simplifies generating new snippet files.
 4. Add an explanation of your changes.
 5. Be ready to respond to feedback during the review.
 
+> If changes are minor or the PR is time-sensitive, maintainers may make the necessary updates and merge the PR on your behalf.
+
 Thanks again for contributing! If you have questions or need help, don't hesitate to reach out. 😊
