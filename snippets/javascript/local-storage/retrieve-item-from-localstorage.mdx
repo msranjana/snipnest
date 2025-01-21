@@ -6,10 +6,10 @@ export const metadata = {
 };
 
 ```javascript
-const getFromLocalStorage = (key) => {
+function getFromLocalStorage(key) {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
-};
+}
 ```
 
 ```javascript
