@@ -1,6 +1,6 @@
 export const metadata = {
-  name: "useGetDimensions",
-  description: "A hook to get live dimensions of given container (ref of container)",
+  name: "useDimensions",
+  description: "Gets live dimensions of a given container (ref of container).",
   keywords: ["dimensions", "live", "hooks", "observer", "screen", "size"],
   contributors: ["manjushsh"],
 };
@@ -8,7 +8,7 @@ export const metadata = {
 ```tsx
 import { useState, useCallback } from "react";
 
-export function useGetDimensions() {
+export function useDimensions() {
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
 
   const ref = useCallback((node: HTMLElement | null) => {
@@ -32,8 +32,8 @@ export function useGetDimensions() {
 ```
 
 ```tsx
-const { dimensions, ref } = useGetDimensions();
-console.log("Dimensions: ", dimensions.width, dimensions.height)
+const { dimensions, ref } = useDimensions();
+console.log("Dimensions: ", dimensions.width, dimensions.height);
 
 return (
   <div ref={ref}>
