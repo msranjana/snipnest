@@ -1,0 +1,50 @@
+export const metadata = {
+  name: "useGetDimensions",
+  description: "A hook to get live dimensions of given container (ref of container)",
+  keywords: ["dimensions", "live", "hooks", "observer", "screen", "size"],
+  contributors: ["manjushsh"],
+};
+
+```tsx
+import { useState, useCallback } from "react";
+
+export function useGetDimensions() {
+  const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
+
+  const ref = useCallback((node: HTMLElement | null) => {
+    if (node !== null) {
+      const resizeObserver = new ResizeObserver((entries) => {
+        if (!entries || entries.length === 0) return;
+
+        const entry = entries[0];
+        const { contentRect } = entry;
+
+        setDimensions({
+          height: contentRect.height,
+          width: contentRect.width,
+        });
+      });
+
+      resizeObserver.observe(node);
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }
+  }, []);
+
+  return { dimensions, ref };
+};
+```
+
+```tsx
+const { dimensions, ref } = useGetDimensions();
+console.log("Dimensions: ", dimensions.width, dimensions.height)
+
+return (
+  <div ref={ref}>
+    <p>Hello There</p>
+    <textarea></textarea>
+  </div>
+);
+```
