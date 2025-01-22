@@ -12,29 +12,23 @@ export function useGetDimensions() {
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
 
   const ref = useCallback((node: HTMLElement | null) => {
-    if (node !== null) {
-      const resizeObserver = new ResizeObserver((entries) => {
-        if (!entries || entries.length === 0) return;
+    if (!node) return;
 
-        const entry = entries[0];
-        const { contentRect } = entry;
-
-        setDimensions({
-          height: contentRect.height,
-          width: contentRect.width,
-        });
+    const resizeObserver = new ResizeObserver(([entry]) => {
+      const { contentRect } = entry;
+      setDimensions({
+        height: contentRect.height,
+        width: contentRect.width,
       });
+    });
 
-      resizeObserver.observe(node);
+    resizeObserver.observe(node);
 
-      return () => {
-        resizeObserver.disconnect();
-      };
-    }
+    return () => resizeObserver.disconnect();
   }, []);
 
   return { dimensions, ref };
-};
+}
 ```
 
 ```tsx
