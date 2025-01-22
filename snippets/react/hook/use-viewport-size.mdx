@@ -1,18 +1,18 @@
 export const metadata = {
   name: "useViewportSize",
   description: "Tracks the size of the viewport.",
-  keywords: ["viewport", "size"],
+  keywords: ["viewport", "size", "window", "screen"],
   contributors: ["itsbrunodev"],
 };
 
 ```typescript
-interface WindowSize {
+interface ViewportSize {
   width: number;
   height: number;
 }
 
-function useWindowSize(): WindowSize {
-  const [size, setSize] = useState<WindowSize>({
+function useViewportSize(): ViewportSize {
+  const [size, setSize] = useState<ViewportSize>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
@@ -34,5 +34,5 @@ function useWindowSize(): WindowSize {
 ```
 
 ```typescript
-const { width, height } = useWindowSize(); // { width: 800, height: 600 }
+const { width, height } = useViewportSize(); // { width: 800, height: 600 }
 ```
