@@ -1,0 +1,33 @@
+export const metadata = {
+  name: "Retrieve Item from IndexedDB",
+  description: "Retrieves a specific item from IndexedDB.",
+  keywords: ["indexeddb", "check", "get"],
+  contributors: ["itsbrunodev"],
+};
+
+```javascript
+function getFromIndexedDB(databaseName, storeName, id) {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(dbName);
+
+    request.onsuccess = (event) => {
+      const db = event.target.result;
+      const transaction = db.transaction(storeName, "readonly");
+      const store = transaction.objectStore(storeName);
+
+      const getRequest = store.get(id);
+
+      getRequest.onsuccess = () => resolve(getRequest.result || null);
+      getRequest.onerror = () => reject(getRequest.error);
+    };
+
+    request.onerror = () => reject(request.error);
+  });
+}
+```
+
+```javascript
+retrieveItemFromIndexedDB("myDatabase", "users", 1)
+  .then(console.log) // { id: 1, name: "Alice", age: 25 } or null
+  .catch(console.error);
+```

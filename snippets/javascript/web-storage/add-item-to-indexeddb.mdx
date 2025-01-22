@@ -1,0 +1,40 @@
+export const metadata = {
+  name: "Add Item to IndexedDB",
+  description: "Adds an item to IndexedDB.",
+  keywords: ["indexeddb", "add", "item"],
+  contributors: ["itsbrunodev"],
+};
+
+```javascript
+function addToIndexedDB(databaseName, storeName, item) {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(databaseName);
+
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains(storeName)) {
+        db.createObjectStore(storeName, { keyPath: "id" });
+      }
+    };
+
+    request.onsuccess = (event) => {
+      const db = event.target.result;
+      const transaction = db.transaction(storeName, "readwrite");
+      const store = transaction.objectStore(storeName);
+
+      const addRequest = store.add(item);
+
+      addRequest.onsuccess = () => resolve(item); // return item object on success
+      addRequest.onerror = () => reject(addRequest.error);
+    };
+
+    request.onerror = () => reject(request.error);
+  });
+}
+```
+
+```javascript
+addItemToIndexedDB("myDatabase", "users", { id: 1, name: "John", age: 25 })
+  .then(console.log) // { id: 1, name: "John", age: 25 }
+  .catch(console.error);
+```
