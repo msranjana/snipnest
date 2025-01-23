@@ -1,0 +1,96 @@
+export const metadata = {
+  name: "useForm",
+  description: "useForm hook simplifies handling forms in React.",
+  keywords: ["form"],
+  contributors: ["manjushsh"],
+};
+
+```tsx
+import { useState, ChangeEvent, FormEvent } from 'react';
+
+type ValidationFunction<T> = (values: T) => Promise<boolean>;
+
+export function useForm<T extends Record<string, string>>(
+  initialValues: T,
+  onSubmit: (values: T) => void,
+  validate: ValidationFunction<T>
+) {
+  const [values, setValues] = useState<T>(initialValues);
+  const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setValues(prev => ({ ...prev, [name]: value }));
+    setErrors(prev => ({ ...prev, [name]: '' }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrors({});
+
+    try {
+      const isValid = await validate(values);
+      if (isValid) {
+        onSubmit(values);
+      } else {
+        setErrors(prev => ({ ...prev, form: 'Validation failed. Please check your inputs.' }));
+      }
+    } catch (error) {
+      setErrors(prev => ({ ...prev, form: `An error occurred. Please try again. ${JSON.stringify(error)}` }));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return { values, errors, isSubmitting, handleChange, handleSubmit };
+}
+```
+
+```tsx
+import React from 'react';
+import { useForm } from './hooks/useForm';
+
+const validate = async (values) => {
+  const errors = {};
+  if (!values.username) {
+    errors.username = 'Username is required';
+  }
+  if (!values.email) {
+    errors.email = 'Email is required';
+  }
+  return Object.keys(errors).length === 0;
+};
+
+const MyForm = () => {
+  const initialValues = { username: '', email: '' };
+
+  const onSubmit = (values) => {
+    console.log('Form submitted successfully with values:', values);
+  };
+
+  const { values, errors, isSubmitting, handleChange, handleSubmit } = useForm(initialValues, onSubmit, validate);
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>
+          Username:
+          <input type="text" name="username" value={values.username} onChange={handleChange} />
+        </label>
+        {errors.username && <span>{errors.username}</span>}
+      </div>
+      <div>
+        <label>
+          Email:
+          <input type="email" name="email" value={values.email} onChange={handleChange} />
+        </label>
+        {errors.email && <span>{errors.email}</span>}
+      </div>
+      {errors.form && <div>{errors.form}</div>}
+      <button type="submit" disabled={isSubmitting}>Submit</button>
+    </form>
+  );
+};
+```
