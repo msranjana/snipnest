@@ -1,0 +1,20 @@
+export const metadata = {
+  name: "Localhost URL",
+  description: "Matches a valid localhost URL.",
+  keywords: ["localhost", "local", "network"],
+  contributors: ["jhokam"],
+};
+
+```regex
+(localhost).
+```
+
+```sh
+# Valid localhost
+http://localhost:8080
+https://localhost:3000
+
+# Invalid localhost
+http://example.com
+https://example.com
+```
