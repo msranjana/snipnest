@@ -1,0 +1,30 @@
+export const metadata = {
+  name: "Is Anagram",
+  description: "Determine whether a number is an Anagram.",
+  keywords: ["math", "Anagram"],
+  contributors: ["iarpitsaxena"],
+};
+
+```javascript
+function isNumericAnagram(num1, num2) {
+  // Convert the numbers to strings
+  const str1 = num1.toString();
+  const str2 = num2.toString();
+
+  // Check if the lengths are different; if yes, they can't be anagrams
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  // Sort the digits of each number and compare them
+  const sortedStr1 = str1.split("").sort().join("");
+  const sortedStr2 = str2.split("").sort().join("");
+
+  return sortedStr1 === sortedStr2;
+}
+```
+
+```javascript
+isNumericPalindrome(12345); // false
+isNumericPalindrome(121); // true
+```
