@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 ```tsx
-import { useRef, useEffect, RefObject } from 'react';
+import { useRef, useEffect, RefObject } from "react";
 
 function useClickOutside(handler: () => void): RefObject<HTMLDivElement> {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,8 +18,8 @@ function useClickOutside(handler: () => void): RefObject<HTMLDivElement> {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [handler]);
 
   return ref;

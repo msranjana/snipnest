@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 ```tsx
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from "react";
 
 type ValidationFunction<T> = (values: T) => Promise<boolean>;
 
@@ -22,7 +22,7 @@ export function useForm<T extends Record<string, string>>(
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValues(prev => ({ ...prev, [name]: value }));
-    setErrors(prev => ({ ...prev, [name]: '' }));
+    setErrors(prev => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -35,7 +35,7 @@ export function useForm<T extends Record<string, string>>(
       if (isValid) {
         onSubmit(values);
       } else {
-        setErrors(prev => ({ ...prev, form: 'Validation failed. Please check your inputs.' }));
+        setErrors(prev => ({ ...prev, form: "Validation failed. Please check your inputs." }));
       }
     } catch (error) {
       setErrors(prev => ({ ...prev, form: `An error occurred. Please try again. ${JSON.stringify(error)}` }));
@@ -49,25 +49,25 @@ export function useForm<T extends Record<string, string>>(
 ```
 
 ```tsx
-import React from 'react';
-import { useForm } from './hooks/useForm';
+import React from "react";
+import { useForm } from "./hooks/useForm";
 
 const validate = async (values) => {
   const errors = {};
   if (!values.username) {
-    errors.username = 'Username is required';
+    errors.username = "Username is required";
   }
   if (!values.email) {
-    errors.email = 'Email is required';
+    errors.email = "Email is required";
   }
   return Object.keys(errors).length === 0;
 };
 
 const MyForm = () => {
-  const initialValues = { username: '', email: '' };
+  const initialValues = { username: "", email: "" };
 
   const onSubmit = (values) => {
-    console.log('Form submitted successfully with values:', values);
+    console.log("Form submitted successfully with values:", values);
   };
 
   const { values, errors, isSubmitting, handleChange, handleSubmit } = useForm(initialValues, onSubmit, validate);
