@@ -1,0 +1,16 @@
+export const metadata = {
+  name: "Lerp",
+  description: "Linearly interpolates between two values.",
+  keywords: ["math", "lerp"],
+  contributors: ["itsbrunodev"],
+};
+
+```javascript
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+```
+
+```javascript
+lerp(0, 100, 0.5); // 50
+```
