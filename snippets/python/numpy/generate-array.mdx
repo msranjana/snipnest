@@ -1,0 +1,17 @@
+export const metadata = {
+  name: "Generate Arrays",
+  description: "Generates arrays using numpy.",
+  keywords: ["array", "random", "numpy"],
+  contributors: ["adityak74"],
+};
+
+```python
+import numpy as np
+
+# Generate a sequence array
+arr_range = np.arange(10, 20, 2)  # [10, 12, 14, 16, 18]
+
+# Generate an array of random numbers
+rand_arr = np.random.rand(5)  # 5 random numbers between 0 and 1
+rand_ints = np.random.randint(10, 50, size=(3, 3))  # 3x3 array of random integers
+```
