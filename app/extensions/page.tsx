@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
+import { EXTENSIONS } from "@/lib/extensions";
+
 export const metadata: Metadata = {
   title: "Extensions - SnipNest",
   description:
@@ -11,14 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function ExtensionsPage() {
-  const extensions = [
-    {
-      name: "SnipNest for Visual Studio Code",
-      link: "https://marketplace.visualstudio.com/items?itemName=itsbrunodev.snipnest",
-      icon: "https://raw.githubusercontent.com/itsbrunodev/snipnest/refs/heads/main/assets/vscode.png",
-    },
-  ];
-
   return (
     <div className="mt-16 max-w-2xl mx-auto flex flex-col gap-16">
       <div className="flex flex-col gap-4 items-center justify-center mx-auto max-w-md text-center">
@@ -29,11 +23,11 @@ export default function ExtensionsPage() {
         </p>
       </div>
       <div className="flex flex-col gap-4">
-        {extensions.map((extension) => (
+        {Object.entries(EXTENSIONS).map(([key, extension]) => (
           <Link
             href={extension.link}
             target="_blank"
-            key={extension.name}
+            key={key}
             className="flex lg:flex-row flex-col w-full items-center justify-between group p-4 lg:gap-0 gap-4 bg-card rounded-md border border-border"
           >
             <div className="flex gap-4 items-center">

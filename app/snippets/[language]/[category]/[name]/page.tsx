@@ -6,6 +6,8 @@ import Link from "next/link";
 import { getSnippet } from "@/lib/snippets";
 import { formatPath } from "@/lib/utils";
 
+import { GitHubIcon } from "@/components/icons/github";
+
 import { Snippet } from "./snippet";
 
 export interface SnippetParams {
@@ -87,21 +89,18 @@ export default async function SnippetPage({ params }: SnippetParams) {
         </p>
       </div>
       <Snippet params={params} />
-      {snippet.metadata.keywords.length > 0 && (
-        <div className="space-y-2">
-          <h2 className="text-lg font-medium">Keywords</h2>
-          <div className="flex gap-1 flex-wrap">
-            {snippet.metadata.keywords.map((keyword) => (
-              <div
-                key={keyword}
-                className="text-sm text-muted-foreground bg-card border border-border rounded-md py-0.5 px-2 shadow-sm dark:shadow-none"
-              >
-                {keyword}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <Link
+        className="text-sm text-foreground hover:underline flex items-center gap-2 group w-fit"
+        href={`https://github.com/itsbrunodev/snipnest/edit/main/snippets/${formatPath(
+          language,
+          category,
+          name
+        )}.mdx`}
+        target="_blank"
+      >
+        <GitHubIcon className="fill-muted-foreground group-hover:fill-foreground transition-colors" />
+        Edit on GitHub
+      </Link>
     </>
   );
 }

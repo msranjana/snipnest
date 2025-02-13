@@ -1,7 +1,9 @@
-export function Logo() {
+import { cn } from "@/lib/utils";
+
+export function Logo({ className }: { className?: string }) {
   return (
     <svg
-      className="size-5 fill-foreground"
+      className={cn("size-5 fill-foreground", className)}
       viewBox="0 0 200 200"
       fill="none"
       role="img"

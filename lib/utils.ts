@@ -66,7 +66,7 @@ export function getSnippetList(groupedSnippets: GroupedSnippets): Snippet[] {
 }
 
 /**
- * Properly formats the language name
+ * Properly formats the language name e.g. ("javascript" -> "JavaScript")
  */
 export function formatLanguage(language: string) {
   return LANGUAGES.find((x) => x.value === language)?.name || language;

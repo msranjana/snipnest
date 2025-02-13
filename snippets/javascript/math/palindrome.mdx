@@ -1,0 +1,21 @@
+export const metadata = {
+  name: "Is Palindrome",
+  description: "Determine whether a string is a palindrome.",
+  keywords: ["math", "palindrome"],
+  contributors: ["iarpitsaxena"],
+};
+
+```javascript
+function isNumericPalindrome(num) {
+  // Convert the number to a string
+  const str = num.toString();
+
+  // Check if the string is equal to its reverse
+  return str === str.split("").reverse().join("");
+}
+```
+
+```javascript
+isNumericPalindrome(12345); // false
+isNumericPalindrome(121); //true
+```

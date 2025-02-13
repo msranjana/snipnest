@@ -2,6 +2,7 @@ import JavascriptIcon from "devicons-react/lib/icons/JavascriptOriginal";
 import TypescriptIcon from "devicons-react/lib/icons/TypescriptOriginal";
 import RustIcon from "devicons-react/lib/icons/RustOriginal";
 import PythonIcon from "devicons-react/lib/icons/PythonOriginal";
+import GodotIcon from "devicons-react/lib/icons/GodotOriginal";
 import ReactIcon from "devicons-react/lib/icons/ReactOriginal";
 
 import { RegexIcon } from "lucide-react";
@@ -36,6 +37,12 @@ export const LANGUAGES: Language[] = [
     icon: PythonIcon,
     isColored: true,
   },
+  {
+    name: "GDScript",
+    value: "gdscript",
+    icon: GodotIcon,
+    isColored: true,
+  },
   /**
    * Languages below aren't languages, but for the
    * sake of simplicity they are considered languages.
@@ -66,5 +73,6 @@ export const LANGUAGE_EXTENSIONS: Map<string, string> = new Map([
   ["react", "jsx"], // react is not a language, but tsx is
   ["python", "py"],
   ["rust", "rs"],
+  ["gdscript", "gd"],
   ["regex", "txt"], // regex is not a language, but txt is
 ]);

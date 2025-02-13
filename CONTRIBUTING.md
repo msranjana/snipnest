@@ -2,6 +2,28 @@
 
 Hey there! Thanks for stopping by and considering contributing to this project. Whether you're fixing bugs, improving the code, or adding cool new snippets, your help means a lot. Before diving in, let's go over a few things to keep everything smooth and consistent.
 
+## 📚 Table of Contents
+
+- [Contributing to SnipNest 🤝](#contributing-to-snipnest-)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [👀 What We're Looking For](#-what-were-looking-for)
+  - [🖋️ Snippet Guidelines](#️-snippet-guidelines)
+    - [📂 Folder Structure](#-folder-structure)
+    - [🗃️ File Type](#️-file-type)
+    - [🔄 What Goes Inside](#-what-goes-inside)
+      - [📋 1. Metadata](#-1-metadata)
+      - [⚙️ 2. Code Blocks](#️-2-code-blocks)
+    - [❗ Important Notes](#-important-notes)
+    - [📘 JavaScript and TypeScript](#-javascript-and-typescript)
+  - [🛠️ How to Contribute](#️-how-to-contribute)
+    - [✔️ Submitting Snippets](#️-submitting-snippets)
+      - [🔧 CLI (Beta)](#-cli-beta)
+      - [✍️ Manually](#️-manually)
+    - [➕ Adding Languages or Categories](#-adding-languages-or-categories)
+      - [🌐 New Language](#-new-language)
+      - [📂 New Category](#-new-category)
+    - [Submitting Your Work](#submitting-your-work)
+
 ## 👀 What We're Looking For
 
 - Share a better way to write something.
@@ -38,22 +60,22 @@ Each snippet file needs two things: **metadata** and **code blocks**.
 
 #### 📋 1. Metadata
 
-At the very top of the file, include this export with the same order of properties:
+At the very top of the file, include this export with the same order of properties, please check if another snippet has the same functionality but in another language, if so, please use the same name and description:
 
 ```javascript
 export const metadata = {
-  name: "Name of the snippet", // Short and clear
-  description: "What the snippet does in a sentence or two", // Describe what the snippet does, clearly and concisely
-  keywords: ["keyword1", "keyword2", "keyword3"], // Add at least the category name in the array, please keep it short and clear and use kebab-case, within a reasonable amount
-  contributors: ["your-username"], // Everyone who helped/contributed, as GitHub usernames
-};
+  name: "Name of the snippet", // Use short and clear names.
+  description: "What the snippet does in a sentence or two", // Be concise and accurate.
+  keywords: ["keyword1", "keyword2", "keyword3"], // Add relevant keywords in kebab-case.
+  contributors: ["username"], // GitHub usernames only. Do not include @ symbols.
+}; // Don't omit the semicolon.
 ```
 
 #### ⚙️ 2. Code Blocks
 
-Your snippet must have **two code blocks** (you **can** use only one, that being the actual snippet, if it's self-explanatory and is for example a "one-liner"):
+Your snippet must have **two code blocks** (you **can** use only one, that being the actual snippet, if it's really short, an example is useful for example for pasting the snippet using the Visual Studio Code extension as it pastes the snippet and the example at the same time):
 
-1. **Snippet**: This is the actual code. Make sure to annotate it with the language for syntax highlighting, please use the ID or alias of the language found in the [supported languages](https://shiki.style/languages) list.
+1. **Snippet**: This is the actual code. Annotate it with the language for syntax highlighting (use the [supported languages](https://shiki.style/languages) list, react snippets that have HTML tags should use `tsx`).
 
    Example:
 
@@ -75,15 +97,22 @@ Your snippet must have **two code blocks** (you **can** use only one, that being
 
 ### ❗ Important Notes
 
-- **No Duplicates**: Don't submit a snippet that does something the target language already has built-in.
-- **Stick to the Rules**: Use the proper casing and formats for folder and file names.
-- **Only Metadata and Code**: Don't add any markdown related content other than the metadata and code blocks.
+- **No Duplicates**: Don't submit a snippet that duplicates built-in language functionality.
+- **Clear Grammar**: Ensure any error messages or text in the code is grammatically correct.
+- **Consistent Naming**: Use precise and relevant terms (e.g., `element` instead of `item` for dictionaries), do not include the name of the category in the snippet's file name (e.g., `chunk.mdx` instead of `chunk-array.mdx`).
+- **File Naming**: File names should match the snippet name (in kebab-case). For instance, a snippet named `Random Element` should have a file named `random-element.mdx`.
+- **Only Metadata and Code**: Don't add unrelated markdown content outside of the required metadata and code blocks.
+- **Trailing Newline**: Make sure the file **does not** end with a trailing newline.
+
+If you're unsure about for example what the name of the snippet's file should be, ask in the [Discussions](https://github.com/itsbrunodev/snipnest/discussions) or check out the other snippets.
 
 ### 📘 JavaScript and TypeScript
 
-If you're planning on submitting a snippet for TypeScript, please check if it already exists for JavaScript. If it does, only submit it if it has major differences, e.g., generics, type annotations. For example, adding a TypeScript equivalent for [To Kebab Case](https://snipnest.dev/javascript/string/to-kebab-case) isn't needed as the only difference is the function parameter type.
+If you're planning to submit a TypeScript snippet, check if it already exists for JavaScript. Only submit it if it has significant differences, like generics or type annotations.
 
-If you're unsure whether you should submit such a snippet, submit it anyway and we'll check it out.
+Please use a regular function, not an arrow function.
+
+If unsure, submit it anyway, and we'll help decide.
 
 ## 🛠️ How to Contribute
 
@@ -93,54 +122,43 @@ You can submit snippets in two ways: **via CLI** or **manually**.
 
 #### 🔧 CLI (Beta)
 
-The CLI makes it easy to generate a new snippet file with all the required structure and metadata. 
+The CLI simplifies generating new snippet files.
 
 > [!NOTE]
-> The CLI is still in beta. It is completely safe to use but is subject to change in upcoming releases.
+> The CLI is in beta but safe to use. It may change in future releases.
 
-1. Clone the repository to your local machine.
+1. Clone the repository.
 2. Install dependencies with `pnpm install`.
-3. Run the CLI new snippet command with:
+3. Run the CLI:
    ```bash
    pnpm snipnest --new
    ```
-4. Follow the prompts:
-   - Enter the **language** name.
-   - Enter the **category** name.
-   - Provide the **snippet's name**.
-   - Write a **short description** of what the snippet does.
-   - Add **keywords**.
-   - Specify the **contributors** (GitHub usernames).
-   - Input the **snippet's code**.
-   - (Optional, refer to [Snippet Guidelines](#%EF%B8%8F-2-code-blocks)) Input an **example** of the snippet in action.
-5. Once done, the CLI will generate the `.mdx` file in the correct folder structure.
-6. Review the generated file and make any additional tweaks if necessary.
-7. Submit your work via a pull request (refer to [Submitting Your Work](#submitting-your-work)).
+4. Follow the prompts to create your snippet.
+5. Review the generated `.mdx` file and make adjustments as needed.
+6. Submit your work via a pull request.
 
 #### ✍️ Manually
 
-If you prefer to create snippets manually, follow these steps:
-
-1. Find the right folder for the language and category. If it doesn't exist, create it (refer to [Adding Languages or Categories](#adding-languages-or-categories)).
-2. Add a new `.mdx` file for your snippet.
-3. Follow the format we outlined above.
-4. Submit your work via a pull request (refer to [Submitting Your Work](#submitting-your-work)).
+1. Navigate to the appropriate folder for the language and category. Create them if they don't exist.
+2. Add a `.mdx` file for your snippet.
+3. Follow the guidelines above to structure and format your file.
+4. Submit your work via a pull request.
 
 ### ➕ Adding Languages or Categories
 
 #### 🌐 New Language
 
-1. Create a new folder in `snippets/` with the language name in lowercase.
+1. Create a folder in `snippets/` with the language name in lowercase.
    - For example: `javascript`, `python`, `cpp`.
 2. Add categories and snippets as needed.
-3. Update the list of languages in `lib/languages.ts`. (strictly only use icons from the `devicons-react` package just like other icons or `lucide-react`)
+3. Update the language list in `lib/languages.ts`. Only use icons from `devicons-react` or `lucide-react`.
 
 #### 📂 New Category
 
-1. Go to the language folder.
-2. Create a new folder for the category in kebab-case.
+1. Go to the appropriate language folder.
+2. Create a folder for the category in kebab-case.
    - For example: `data-structures`, `file-handling`.
-3. Add your snippets inside.
+3. Add snippets inside.
 
 ### Submitting Your Work
 
@@ -150,4 +168,6 @@ If you prefer to create snippets manually, follow these steps:
 4. Add an explanation of your changes.
 5. Be ready to respond to feedback during the review.
 
-Thanks again for contributing! If you have questions or need help, don't hesitate to reach out.
+> If changes are minor or the PR is time-sensitive, maintainers may make the necessary updates and merge the PR on your behalf.
+
+Thanks again for contributing! If you have questions or need help, don't hesitate to reach out. 😊

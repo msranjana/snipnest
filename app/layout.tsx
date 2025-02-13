@@ -17,7 +17,10 @@ import { getGroupedSnippets } from "@/lib/snippets";
 import { cn, getSnippetList } from "@/lib/utils";
 
 import { ThemeProvider } from "@/components/theme/provider";
+
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+
 import { SearchProvider } from "@/components/search/provider";
 import { SearchDialog } from "@/components/search/dialog";
 
@@ -101,6 +104,7 @@ export default async function RootLayout({
                 {children}
                 <SearchDialog snippetList={snippetList} />
               </div>
+              <Footer />
             </div>
           </ThemeProvider>
         </SearchProvider>

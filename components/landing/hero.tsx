@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon /* , PackageIcon */ } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,10 @@ import { CodePreview } from "@/components/code-preview";
 import { getRandomSnippet } from "@/lib/snippets";
 import { formatPath } from "@/lib/utils";
 import { LANGUAGES } from "@/lib/languages";
+// import { EXTENSIONS } from "@/lib/extensions";
 
 import { LanguageIcon } from "../icons/language";
+// import { Badge } from "../badge";
 
 export async function Hero() {
   const randomSnippet = await getRandomSnippet();
@@ -18,8 +20,15 @@ export async function Hero() {
   )!;
 
   return (
-    <div className="h-screen w-full flex xl:flex-row flex-col xl:justify-between justify-center items-center xl:gap-0 gap-12">
+    <div className="h-[77vh] w-full flex xl:flex-row flex-col xl:justify-between justify-center items-center xl:gap-0 gap-12">
       <div className="flex flex-col gap-6 text-left xl:w-[512px] w-full">
+        {/* <Badge
+          href={EXTENSIONS.vscode.link}
+          target="_blank"
+          prefix={PackageIcon}
+        >
+          New! Visual Studio Code extension
+        </Badge> */}
         <div className="space-y-4">
           <h1 className="lg:text-4xl text-3xl font-bold">
             Code Smarter, Not Harder.
@@ -56,6 +65,7 @@ export async function Hero() {
         <div className="flex flex-col gap-3 md:w-[640px] w-full">
           <div className="aspect-[5/3] w-[inherit] rounded-lg bg-accent border border-border overflow-hidden md:pt-12 pt-4 md:pl-12 pl-4 relative shadow-sm dark:shadow-none">
             <CodePreview
+              className="z-10 relative h-full bg-card rounded-tl-md text-left pt-4 border-l border-t border-border"
               code={`\`\`\`${
                 randomSnippetLanguage?.alias || randomSnippetLanguage.value
               }\n${randomSnippet.content}\n\`\`\``}

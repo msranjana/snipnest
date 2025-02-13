@@ -1,6 +1,6 @@
 export const metadata = {
-  name: "Factorial of a number",
-  description: "Generates a Factorial of a given number.",
+  name: "Factorial ",
+  description: "Calculates the factorial of a number.",
   keywords: ["math", "factorial"],
   contributors: ["msranjana"],
 };
@@ -8,7 +8,7 @@ export const metadata = {
 ```python
 def factorial(num):
     if num < 0:
-        return "Factorial not defined for a negative numbers"
+        return "Factorial not defined for a negative number"
     elif num == 0:
         return 1
     else:
@@ -16,4 +16,9 @@ def factorial(num):
         for i in range(1, num + 1):
             fact *= i
         return fact
+```
+
+```python
+factorial(5) #120
+factorial(-5) #Factorial not defined for a negative number
 ```
